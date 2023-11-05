@@ -2,12 +2,12 @@ import React from 'react';
 import '../../App.css'
 import '../About.css';
 
-function About(){
+function AA(){
     return (
         <div className='about-container'>
-            <h1 className='about-title'>about</h1>
+            <h1>aa</h1>
             <p>
-                Purpose: matching perfect couple by using Ai to analyze their profile data and preferences<br />
+                aa<br />
                 Problem: for people who struggle to find meaningful connections and potential partners<br />
                 Improve: we will improve the matching system of the app<br />
                 Vision: users will trust our platform to find their perfect match and continue using our app to nurture and sustain their relationships.
@@ -33,4 +33,4 @@ function About(){
         </div>
     )
 }
-export default About;
+export default AA;

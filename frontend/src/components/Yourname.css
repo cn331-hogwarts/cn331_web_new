@@ -24,5 +24,6 @@ video {
 }
 .yourname-btn {
     margin-top: 200px;
-    position: fixed;
+    position: relative;
+
 }
