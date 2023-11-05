@@ -17,19 +17,30 @@ function Navbar() {
       setButton(true);
     }
   };
+  const [h1Color, setH1Color] = useState("#0093af");
+  const chageColorAfter=(t) => {
+        setTimeout(()=>{
+            setH1Color("#a76bcf");
+        },t*1000);
+
+    };
+
+  useEffect(()=>{chageColorAfter(9.5);
+  }, []);
 
   useEffect(() => {
     showButton();
+    return () => {
+      window.removeEventListener('resize', showButton);
+    };
   }, []);
-
-  window.addEventListener('resize', showButton);
 
   return (
     <>
-      <nav className='navbar'>
+      <nav className='navbar' style={{background: `linear-gradient(90deg, #000000 10%, ${h1Color} 100%)`}}>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            TRVL
+            findaway
             <i className='fab fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
@@ -43,20 +54,20 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/services'
+                to='/profile'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Services
+                profile
               </Link>
             </li>
             <li className='nav-item'>
               <Link
-                to='/products'
+                to='/predict'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Products
+                find someone
               </Link>
             </li>
 
@@ -66,11 +77,11 @@ function Navbar() {
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                Sign In
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          {button && <Button buttonStyle='btn--outline'>Sign In</Button>}
         </div>
       </nav>
     </>
