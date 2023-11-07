@@ -8,7 +8,7 @@ export  function getperson() {
 
 
 export  function getpersonByID(id) {
-    return axios.get('http://127.0.0.1:8000/api/person/'+id.toStrinf()+'/')
+    return axios.get('http://127.0.0.1:8000/api/person/'+id.toString()+'/')
     .then(res => {
       return res.data
   })}

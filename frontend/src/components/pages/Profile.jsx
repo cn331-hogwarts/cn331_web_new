@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getperson ,getpersonByID} from "../services/Api";
 import "../Profile.css"
+import Signin from "./Signin";
 
 function Profile() {
   const [persons, setPersons] = useState([]);
@@ -17,15 +18,18 @@ function Profile() {
       mount = false;
     };
   }, []);
+if (Signin.currentUser){
+  return(
+    <div className="profile-container">
+    <p>{Signin.username}</p>
+    <p>{Signin.email}</p>
+    </div>
+  );
+}
 
 return (
     <div className="profile-container">
-        <h1>person list</h1>
-            {persons.map((person,index)=>(
-            <li key={index}>
-                    <p>name:{person.name} blood_group:{person.blood_group} mbti:{person.mbti}</p>
-            </li>
-            ))}
+        <h1>p list</h1>
     </div>
 );
 }
