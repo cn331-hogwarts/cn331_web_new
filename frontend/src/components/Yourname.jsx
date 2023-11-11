@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './yourname.css'
+import './Yourname.css'
 import '../App.css'
 import { Button } from "./Button";
 

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { useAuth } from '../AuthContext';
 
 function Navbar() {
+  const { currentUser, username, email } = useAuth();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 

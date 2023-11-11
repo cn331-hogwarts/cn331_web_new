@@ -1,18 +1,29 @@
-import React, { createContext, useContext, useState } from 'react';
-import Signin from './components/pages/Signin';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(Signin.currentUser);
+  const [currentUser, setCurrentUser] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+
+  const login = (userData) => {
+    setCurrentUser(true);
+    setUsername(userData.username);
+    setEmail(userData.email);
+  };
+
+  const logout = () => {
+    setCurrentUser(false);
+    setUsername('');
+    setEmail('');
+  };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ currentUser, username, email, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);

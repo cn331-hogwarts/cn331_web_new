@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getperson ,getpersonByID} from "../services/Api";
-import "../Profile.css"
-import Signin from "./Signin";
+import React, { useEffect, useState } from 'react';
+import { getperson, getpersonByID } from '../services/Api';
+import '../Profile.css';
+import { useAuth } from '../../AuthContext';
 
 function Profile() {
+  const { currentUser, username, email } = useAuth();
   const [persons, setPersons] = useState([]);
 
   useEffect(() => {
@@ -18,20 +19,18 @@ function Profile() {
       mount = false;
     };
   }, []);
-if (Signin.currentUser){
-  return(
+
+  return (
     <div className="profile-container">
-    <p>{Signin.username}</p>
-    <p>{Signin.email}</p>
+      <h1>Profile</h1>
+      {currentUser==true && (
+        <>
+          <p>Username: {username}</p>
+          <p>Email: {email}</p>
+        </>
+      )}
     </div>
   );
-}
-
-return (
-    <div className="profile-container">
-        <h1>p list</h1>
-    </div>
-);
 }
 
 export default Profile;

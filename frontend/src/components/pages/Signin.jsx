@@ -11,22 +11,21 @@ function Signin() {
   axios.defaults.xsrfHeaderName = 'X-CSRFToken';
   axios.defaults.withCredentials = true;
 
-
   const [currentUser, setCurrentUser] = useState(false);
   const [registrationToggle, setRegistrationToggle] = useState(false);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const {cu,login,logout}=useAuth();
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/user/")
-      .then(function(res) {
-        setCurrentUser(true);
-      })
-      .catch(function(error) {
-        setCurrentUser(false);
-        console.log("err",error.data)
-      });
+    const authToken =localStorage.getItem('authToken');
+    if (authToken){
+      setCurrentUser(true);
+    }
+    else{
+      setCurrentUser(false);
+    }
     },[]);
 console.log("currentuser",currentUser)
 console.log("register",registrationToggle)
@@ -49,15 +48,11 @@ function update_form_btn() {
         password: password
       }
     ).then(function(res) {
-      axios.post(
-        "http://127.0.0.1:8000/api/login/",
-        {
-          email: email,
-          password: password
-        }
-      ).then(function(res) {
-        setCurrentUser(true);
-      });
+      login({ username, email });
+      const authToken =res.data.token;
+      localStorage.setItem('authToken',authToken);
+      setCurrentUser(true);
+
     }).catch(function(error){
       console.log("err",error.data)
     });
@@ -72,7 +67,11 @@ function update_form_btn() {
         password: password
       }
     ).then(function(res) {
+      login({ username, email });
+      const authToken =res.data.token;
+      localStorage.setItem('authToken',authToken);
       setCurrentUser(true);
+
     }).catch(function(error){
       console.log("err",error.data)
     });
@@ -84,6 +83,8 @@ function update_form_btn() {
       "http://127.0.0.1:8000/api/logout/",
       null,
     ).then(function(res) {
+      logout();
+      localStorage.removeItem('authToken');
       setCurrentUser(false);
     }).catch(function(error){
       console.log("err",error.data)

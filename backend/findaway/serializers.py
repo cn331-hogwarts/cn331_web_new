@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 		model = UserModel
 		fields = ('email', 'username')
 
-class serializers_person(serializers.HyperlinkedModelSerializer):
+class serializers_person(serializers.ModelSerializer):
     class Meta:
         model=models.Person
         fields=['p_id','name','blood_group','mbti']

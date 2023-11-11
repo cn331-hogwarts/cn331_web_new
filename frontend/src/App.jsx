@@ -6,10 +6,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './components/pages/About';
 import Profile from './components/pages/Profile';
 import Signin from './components/pages/Signin';
+import { AuthProvider } from './AuthContext';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -19,7 +20,7 @@ function App() {
           <Route path='/signin' exact element={<Signin/>}/>
         </Routes>
       </Router>
-    </>
+    </AuthProvider>
   );
 }
 

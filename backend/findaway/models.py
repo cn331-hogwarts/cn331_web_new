@@ -30,8 +30,6 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    # Add any additional fields you need for your user model
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -106,4 +104,4 @@ class Person(models.Model):
     registed_day=models.DateField(auto_now_add=True)
     updates=models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.name
+        return self.p_id
