@@ -1,32 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { getperson, getpersonByID } from '../services/Api';
 import '../Profile.css';
 import { useAuth } from '../../AuthContext';
+import axios from 'axios';
 
+
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.withCredentials = true;
 function Profile() {
-  const { currentUser, username, email } = useAuth();
-  const [persons, setPersons] = useState([]);
+
+  const { currentUser } = useAuth();
+  const [user, setUser] = useState({});
+  
 
   useEffect(() => {
-    let mount = true;
-    getperson()
-      .then((res) => {
-        if (mount) {
-          setPersons(res);
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/user/");
+        if (isMounted) {
+          setUser(response.data);
         }
-      });
-    return () => {
-      mount = false;
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        console.log('Response status:', error.response.data);
+      }
     };
-  }, []);
+
+    if (currentUser) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [currentUser]);
 
   return (
     <div className="profile-container">
       <h1>Profile</h1>
-      {currentUser==true && (
+      {currentUser && (
         <>
-          <p>Username: {username}</p>
-          <p>Email: {email}</p>
+          <p>Username : {user.username}</p>
+          <p>Email: {user.email}</p>
         </>
       )}
     </div>

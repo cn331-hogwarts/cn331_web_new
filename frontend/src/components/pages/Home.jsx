@@ -7,6 +7,10 @@ import axios from 'axios';
 import Signin from './Signin';
 
 console.log(Signin.currentUser)
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.withCredentials = true;
+
 function Home() {
   return (
     <>

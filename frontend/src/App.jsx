@@ -7,8 +7,10 @@ import About from './components/pages/About';
 import Profile from './components/pages/Profile';
 import Signin from './components/pages/Signin';
 import { AuthProvider } from './AuthContext';
+import axios from 'axios';
 
 function App() {
+  
   return (
     <AuthProvider>
       <Router>

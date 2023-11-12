@@ -16,7 +16,7 @@ function Signin() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {cu,login,logout}=useAuth();
+  const {login,logout}=useAuth();
 
   useEffect(() => {
     const authToken =localStorage.getItem('authToken');
@@ -27,8 +27,8 @@ function Signin() {
       setCurrentUser(false);
     }
     },[]);
-console.log("currentuser",currentUser)
-console.log("register",registrationToggle)
+  console.log("currentuser",currentUser)
+  console.log("register",registrationToggle)
 function update_form_btn() {
   if (registrationToggle) {
     document.getElementById("form_btn").innerHTML = "Register";
@@ -48,9 +48,14 @@ function update_form_btn() {
         password: password
       }
     ).then(function(res) {
+      axios.post(
+        "http://127.0.0.1:8000/api/api/login",
+        {
+          email: email,
+          password: password
+        }
+      )
       login({ username, email });
-      const authToken =res.data.token;
-      localStorage.setItem('authToken',authToken);
       setCurrentUser(true);
 
     }).catch(function(error){
@@ -68,8 +73,6 @@ function update_form_btn() {
       }
     ).then(function(res) {
       login({ username, email });
-      const authToken =res.data.token;
-      localStorage.setItem('authToken',authToken);
       setCurrentUser(true);
 
     }).catch(function(error){
@@ -84,7 +87,6 @@ function update_form_btn() {
       null,
     ).then(function(res) {
       logout();
-      localStorage.removeItem('authToken');
       setCurrentUser(false);
     }).catch(function(error){
       console.log("err",error.data)

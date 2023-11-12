@@ -1,8 +1,15 @@
 import { createContext, useContext, useState } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
+
+  axios.defaults.xsrfCookieName = 'csrftoken';
+  axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+  axios.defaults.withCredentials = true;
+  
   const [currentUser, setCurrentUser] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

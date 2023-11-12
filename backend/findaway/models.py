@@ -95,7 +95,7 @@ class Person(models.Model):
     ("Aquarius", "Aquarius"),
     ("Pisces", "Pisces")
 ]
-    p_id=models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     name=models.CharField(max_length=300,default=None)
     blood_group=models.CharField(max_length=100,default=None,choices=bg)
     #hobbies=models.CharField(max_length=200,default=None,choices=top20_hobbies)

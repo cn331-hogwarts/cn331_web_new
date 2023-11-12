@@ -28,9 +28,9 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserModel
-		fields = ('email', 'username')
+		fields = ['email', 'username']
 
 class serializers_person(serializers.ModelSerializer):
     class Meta:
         model=models.Person
-        fields=['p_id','name','blood_group','mbti']
+        fields=['user','name','blood_group','mbti']
