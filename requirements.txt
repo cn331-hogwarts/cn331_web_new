@@ -4,5 +4,4 @@ djangorestframework
 django-cors-headers
 gunicorn
 whitenoise
-psycopg2
 dj-database-url
