@@ -1,3 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-image: url('https://i.pinimg.com/originals/8b/3c/4f/8b3c4f0f972b936fae0c888c5e5ede98.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.body-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.about-box {
+    margin-bottom: 20px;
+    width: 50%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
 .about-container {
-    padding-top: 90px;
+    text-align: left;
+    max-width: 800px;
+}
+
+.about-title {
+    text-align: center;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 26px;
+}
+
+.about-paragraph {
+    background-color: #c07fda;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 15px;
 }
