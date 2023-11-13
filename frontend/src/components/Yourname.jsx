@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import './Yourname.css'
 import '../App.css'
-import { Button } from "./Button";
+import { Button } from "./Button"
 
-function Yourname(){
+const Yourname=()=>{
     const [h1Color, setH1Color] = useState("#000000");
     const chageColorAfter=(t) => {
         setTimeout(()=>{
@@ -21,11 +21,11 @@ function Yourname(){
             <video src="src/assets/images/videoplayback.mp4" autoPlay loop muted type="video/mp4"/>
             <h1 style={{color:h1Color}}> someone is waiting </h1>
             <div className="yourname-btn">
-                <Button className="btns" buttonStyle='btn--outline' buttonSize='btn--large'>
-                    gooo
+                <Button className="btns" buttonStyle='btn--outline' buttonSize='btn--large' button_link='/register'>
+                    signup
                 </Button>
-                <Button className="btns2" buttonStyle='btn--primary' buttonSize='btn--large'>
-                    predict
+                <Button className="btns2" buttonStyle='btn--primary' buttonSize='btn--large' button_link='/signin'>
+                    signin
                 </Button>
             </div>
 

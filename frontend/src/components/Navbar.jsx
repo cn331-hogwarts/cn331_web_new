@@ -1,16 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Button } from './Button'
+import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css';
-import { useAuth } from '../AuthContext';
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, reset } from '../components/services/authSlice'
+import { toast } from 'react-toastify';
 
-function Navbar() {
-  const { currentUser, username, email } = useAuth();
+const Navbar=()=> {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate('/');
+    toast.success("logout success")
+  };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -19,15 +32,16 @@ function Navbar() {
       setButton(true);
     }
   };
-  const [h1Color, setH1Color] = useState("#0093af");
-  const chageColorAfter=(t) => {
-        setTimeout(()=>{
-            setH1Color("#a76bcf");
-        },t*1000);
 
-    };
+  const [h1Color, setH1Color] = useState('#0093af');
+  const changeColorAfter = (t) => {
+    setTimeout(() => {
+      setH1Color('#a76bcf');
+    }, t * 1000);
+  };
 
-  useEffect(()=>{chageColorAfter(9.5);
+  useEffect(() => {
+    changeColorAfter(9.5);
   }, []);
 
   useEffect(() => {
@@ -39,7 +53,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className='navbar' style={{background: `linear-gradient(90deg, #000000 10%, ${h1Color} 100%)`}}>
+      <nav className='navbar' style={{ background: `linear-gradient(90deg, #000000 10%, ${h1Color} 100%)` }}>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             findaway
@@ -55,35 +69,30 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/profile'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
+              {user ?(
+                <Link to='/profile' className='nav-links' onClick={closeMobileMenu}>
                 profile
               </Link>
+              ):null}
             </li>
             <li className='nav-item'>
-              <Link
-                to='/predict'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
+              <Link to='/predict' className='nav-links' onClick={closeMobileMenu}>
                 find someone
               </Link>
             </li>
 
             <li>
-              <Link
-                to='/signin'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign in
-              </Link>
+              {user ? (
+                <Link to='/' className='nav-links-mobile' onClick={handleLogout}>
+                  signout
+                </Link>
+              ) : null}
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline' button_link='/signin'>Sign In</Button>}
+          {user ?(
+            <Button buttonStyle='btn--outline' button_link='/' onClick={handleLogout}>signout</Button>
+          ): 
+            button && <Button buttonStyle='btn--outline' button_link='/signin' >signin</Button>}
         </div>
       </nav>
     </>

@@ -1,53 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import '../Profile.css';
-import { useAuth } from '../../AuthContext';
-import axios from 'axios';
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-axios.defaults.withCredentials = true;
-function Profile() {
+const Profile = () => {
 
-  const { currentUser } = useAuth();
-  const [user, setUser] = useState({});
-  
+    const { userInfo } = useSelector((state) => state.auth)
 
-  useEffect(() => {
-    let isMounted = true;
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/api/user/");
-        if (isMounted) {
-          setUser(response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-        console.log('Response status:', error.response.data);
-      }
-    };
-
-    if (currentUser) {
-      fetchData();
-    }
-
-    return () => {
-      isMounted = false;
-    };
-  }, [currentUser]);
-
-  return (
-    <div className="profile-container">
-      <h1>Profile</h1>
-      {currentUser && (
-        <>
-          <p>Username : {user.username}</p>
-          <p>Email: {user.email}</p>
-        </>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <h1>this is profile</h1>
+            <h1>fitst_name:{userInfo.first_name} </h1>
+            <h1>last_name:{userInfo.last_name}</h1>
+            <h1>id:{userInfo.id}</h1>
+            <h1>email:{userInfo.email}</h1>
+            
+            
+        </div>
+    )
 }
 
-export default Profile;
+export default Profile

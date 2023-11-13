@@ -1,42 +1,28 @@
-from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin
-from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.utils.translation import gettext_lazy as _
+from .managers import CustomUserManager
 
-class AppUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
-        if not email:
-            raise ValueError('An email is required.')
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True')
-
-        return self.create_user(email, password, **extra_fields)
-
-class AppUser(AbstractBaseUser, PermissionsMixin):
-    user_id = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=50, unique=True)
-    username = models.CharField(max_length=50)
+class User(AbstractBaseUser, PermissionsMixin):
+    first_name = models.CharField(_("First Name"), max_length=100)
+    last_name = models.CharField(_("Last Name"), max_length=100)
+    email = models.EmailField(_("Email Address"), max_length=254, unique=True)
     is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    date_joined =  models.DateTimeField(auto_now_add=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
-    objects = AppUserManager()
+    objects = CustomUserManager()
+
+    class Meta:
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
 
     def __str__(self):
-        return self.username
+        return self.email
 
 
 class Person(models.Model):
@@ -95,7 +81,7 @@ class Person(models.Model):
     ("Aquarius", "Aquarius"),
     ("Pisces", "Pisces")
 ]
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=300,default=None)
     blood_group=models.CharField(max_length=100,default=None,choices=bg)
     #hobbies=models.CharField(max_length=200,default=None,choices=top20_hobbies)
