@@ -1,22 +1,17 @@
 from rest_framework import serializers
 from . import models
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model,authenticate
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-
-import djoser
 from djoser.serializers import UserCreateSerializer
 
-
 User = get_user_model()
-
 
 class CreateUserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ['id', 'email', 'first_name', 'last_name', 'password']
+        fields = ['id', 'email', 'first_name', 'last_name','password','blood_group','mbti']
 
-class serializers_person(serializers.ModelSerializer):
+class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model=models.Person
-        fields=['user','name','blood_group','mbti']
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name','blood_group', 'mbti']

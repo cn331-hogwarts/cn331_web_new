@@ -30,7 +30,7 @@ function App() {
           <Route path="/password/reset/confirm/:uid/:token" exact element={<ResetPasswordPageConfirm/>} />
         </Routes>
       </Router>
-      <ToastContainer />
+      <ToastContainer/>
     </>
   );
 }

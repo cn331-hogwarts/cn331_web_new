@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from "react-redux"
 import { resetPasswordConfirm } from '../services/authSlice'
 import { AiFillLock } from 'react-icons/ai'
+import '../ResetPasswordPageConfirm.css'
 
 const ResetPasswordPageConfirm = () => {
 
@@ -58,28 +59,30 @@ const ResetPasswordPageConfirm = () => {
 
     return (
         <>
-            <div className="container auth__container">
-                <h1 className="main__title">Reset Password here <AiFillLock /></h1>
+            <div className="body_container">
+                <div className="container auth__container">
+                    <h1 className="main__title">Reset Password here <AiFillLock /></h1>
 
-                {isLoading }
+                    {isLoading }
 
-                <form className="auth__form">
-                    <input type="password"
-                        placeholder="New password"
-                        name="new_password"
-                        onChange={handleChange}
-                        value={new_password}
-                        required
-                    />
-                    <input type="password"
-                        placeholder="Confirm new password"
-                        name="re_new_password"
-                        onChange={handleChange}
-                        value={re_new_password}
-                        required
-                    />
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
-                </form>
+                    <form className="auth__form">
+                        <input type="password"
+                            placeholder="New password"
+                            name="new_password"
+                            onChange={handleChange}
+                            value={new_password}
+                            required
+                        />
+                        <input type="password"
+                            placeholder="Confirm new password"
+                            name="re_new_password"
+                            onChange={handleChange}
+                            value={re_new_password}
+                            required
+                        />
+                        <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
+                    </form>
+                </div>
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BACKEND_DOMAIN = "http://localhost:8000"
+const BACKEND_DOMAIN = "http://178.128.125.251:80" //https backend
 
 const REGISTER_URL = `${BACKEND_DOMAIN}/api/v1/auth/users/`
 const LOGIN_URL = `${BACKEND_DOMAIN}/api/v1/auth/jwt/create/`
@@ -8,7 +8,6 @@ const ACTIVATE_URL = `${BACKEND_DOMAIN}/api/v1/auth/users/activation/`
 const RESET_PASSWORD_URL = `${BACKEND_DOMAIN}/api/v1/auth/users/reset_password/`
 const RESET_PASSWORD_CONFIRM_URL = `${BACKEND_DOMAIN}/api/v1/auth/users/reset_password_confirm/`
 const GET_USER_INFO = `${BACKEND_DOMAIN}/api/v1/auth/users/me/`
-
 
 
 const register = async (userData) => {
@@ -99,8 +98,30 @@ const getUserInfo = async (accessToken) => {
     return response.data
 }
 
+const updateUserProfile = async (userData) => {
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${userData.accessToken}`
+        }
+    };
 
+    const response = await axios.put(GET_USER_INFO, userData, config);
 
-const authService = { register, login, logout, activate, resetPassword, resetPasswordConfirm, getUserInfo }
+    return response.data;
+};
+
+const USER_INFO_KEY = 'user_info';
+
+const saveUserInfoToLocal = (userInfo) => {
+    localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfo));
+};
+
+const getUserInfoFromLocal = () => {
+    const userInfo = localStorage.getItem(USER_INFO_KEY);
+    return userInfo ? JSON.parse(userInfo) : null;
+};
+
+const authService = { register, login, logout, activate, resetPassword, resetPasswordConfirm, getUserInfo ,updateUserProfile,saveUserInfoToLocal,getUserInfoFromLocal}
 
 export default authService

@@ -1,17 +1,17 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk,createAction } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-const user = JSON.parse(localStorage.getItem("user"))
-
+//const user = JSON.parse(localStorage.getItem("user"))
+const userFromLocal = authService.getUserInfoFromLocal();
 
 const initialState = {
-    user: user ? user : null,
-    userInfo: {},
+    user: userFromLocal ? userFromLocal : null,
+    userInfo: userFromLocal ? userFromLocal : {},
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: "",
-}
+};
 
 export const register = createAsyncThunk(
     "auth/register",
@@ -99,17 +99,23 @@ export const getUserInfo = createAsyncThunk(
     "auth/getUserInfo",
     async (_, thunkAPI) => {
         try {
-            const accessToken = thunkAPI.getState().auth.user.access
-            return await authService.getUserInfo(accessToken)
+            const accessToken = thunkAPI.getState().auth.user.access;
+            const userInfo = await authService.getUserInfo(accessToken);
+            authService.saveUserInfoToLocal(userInfo);
+            thunkAPI.dispatch(updateUserInfo(userInfo));
+            return userInfo;
         } catch (error) {
             const message = (error.response && error.response.data
                 && error.response.data.message) ||
-                error.message || error.toString()
-
-            return thunkAPI.rejectWithValue(message)
+                error.message || error.toString();
+            return thunkAPI.rejectWithValue(message);
         }
     }
-)
+);
+
+export const updateUserInfo = createAction("auth/updateUserInfo");
+
+
 
 
 export const authSlice = createSlice({
@@ -202,7 +208,10 @@ export const authSlice = createSlice({
                 state.user = null
             })
             .addCase(getUserInfo.fulfilled, (state, action) => {
-                state.userInfo = action.payload
+                state.userInfo = action.payload;
+            })
+            .addCase(updateUserInfo, (state, action) => {
+                state.userInfo = action.payload;
             })
     }
 })

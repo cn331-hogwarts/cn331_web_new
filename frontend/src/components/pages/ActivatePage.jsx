@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { activate, reset } from '../services/authSlice'
 import { toast } from 'react-toastify'
+import '../ActivatePage.css'
 
 const ActivatePage = () => {
 
@@ -41,13 +42,15 @@ const ActivatePage = () => {
 
     return (
         <div>
-            <div className="container auth__container">
-                <h1 className="main__title">Activate Account <BiUserCheck /> </h1>
+            <div className="Activate_container">
+                <div className="auth__container">
+                    <h1 className="main__title">Activate Account <BiUserCheck /> </h1>
 
-                {isLoading }
+                    {isLoading }
 
-                <button className="btn btn-accent btn-activate-account" type="submit" onClick={handleSubmit}>Activate Account</button>
-            </div>
+                    <button className="btn btn-accent btn-activate-account" type="submit" onClick={handleSubmit}>Activate Account</button>
+                </div>
+            </div>    
         </div>
     )
 }

@@ -10,10 +10,10 @@ function About() {
                 <div className='about-container'>
                     <h1 className='about-title'>about</h1>
                     <p className='about-paragraph'>
-                        Purpose: matching perfect couple by using Ai to analyze their profile data and preferences<br />
-                        Problem: for people who struggle to find meaningful connections and potential partners<br />
-                        Improve: we will improve the matching system of the app<br />
-                        Vision: users will trust our platform to find their perfect match and continue using our app to nurture and sustain their relationships.
+                        <b>Purpose</b>: matching perfect couple by using Ai to analyze their profile data and preferences<br />
+                        <b>Problem</b>: for people who struggle to find meaningful connections and potential partners<br />
+                        <b>Improve</b>: we will improve the matching system of the app<br />
+                        <b>Vision</b>: users will trust our platform to find their perfect match and continue using our app to nurture and sustain their relationships.
                     </p>
                 </div>
             </div>

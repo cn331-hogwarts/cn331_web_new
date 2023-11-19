@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { BiLogInCircle } from "react-icons/bi"
 import { resetPassword } from "../services/authSlice.jsx"
+import '../ResetPasswordPage.css'
 
 const LoginPage = () => {
 
@@ -43,7 +44,7 @@ const LoginPage = () => {
         }
         if (isSuccess) {
             navigate("/")
-            toast.success("resetpassword requesr was send to email")
+            toast.success("reset password request was send to an email")
 
         }
 
@@ -51,28 +52,28 @@ const LoginPage = () => {
     }, [isError, isSuccess, message, navigate, dispatch])
 
 
-
     return (
         <>
-            <div className="container auth__container">
-                <h1 className="main__title">Reset Password <BiLogInCircle /></h1>
+            <div className="body-container">
+                <div className="container auth__container">
+                    <h1 className="main__title">Reset Password <BiLogInCircle /></h1>
 
-                {isLoading}
+                    {isLoading}
 
-                <form className="auth__form">
-                    <input type="text"
-                        placeholder="email"
-                        name="email"
-                        onChange={handleChange}
-                        value={email}
-                        required
-                    />
-
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
-                </form>
+                    <form className="auth__form">
+                        <input type="text"
+                            placeholder="email"
+                            name="email"
+                            onChange={handleChange}
+                            value={email}
+                            required
+                        />
+                        <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
+                    </form>
+                </div>
             </div>
         </>
-    )
+    );
 }
 
-export default LoginPage
+export default LoginPage;

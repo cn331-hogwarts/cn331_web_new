@@ -11,21 +11,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     date_joined =  models.DateTimeField(auto_now_add=True)
-    
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
-
-    objects = CustomUserManager()
-
-    class Meta:
-        verbose_name = _("User")
-        verbose_name_plural = _("Users")
-
-    def __str__(self):
-        return self.email
-
-
-class Person(models.Model):
     bg= [("A","A"),("B","B"),("AB","AB"),("O","O")]
     top20_hobbies = [
     ("Reading", "Reading"),
@@ -81,13 +66,20 @@ class Person(models.Model):
     ("Aquarius", "Aquarius"),
     ("Pisces", "Pisces")
 ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name=models.CharField(max_length=300,default=None)
-    blood_group=models.CharField(max_length=100,default=None,choices=bg)
+    blood_group=models.CharField(max_length=100,blank=True,choices=bg)
     #hobbies=models.CharField(max_length=200,default=None,choices=top20_hobbies)
-    mbti=models.CharField(max_length=100,default=None,choices=mbti_types)
+    mbti=models.CharField(max_length=100,blank=True,choices=mbti_types)
     #zodiac=models.CharField(max_length=100,default=None,choices=zodiac_signs)
-    registed_day=models.DateField(auto_now_add=True)
-    updates=models.DateTimeField(auto_now=True)
+    
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["first_name", "last_name","blood_group","mbti"]
+
+    objects = CustomUserManager()
+
+    class Meta:
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
+
     def __str__(self):
-        return self.p_id
+        return self.email
+

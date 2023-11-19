@@ -12,12 +12,17 @@ function Cards() {
             <CardItem
               src='src/assets/images/Personality-Test-900x568.png'
               text='what is MBTI '
-              path='https://www.16personalities.com/en'
+              path='https://www.16personalities.com'
             />
             <CardItem
               src='src/assets/images/astrology-horoscope-circle.webp'
               text='what is you zodiac sign'
               path='https://www.britannica.com/place/Leo-constellation'
+            />
+            <CardItem
+              src='src/assets/images/harry-potter-houses-as-signs-1568129236.png'
+              text='houses at hogwarts'
+              path='https://www.wizardingworld.com/news/discover-your-hogwarts-house-on-wizarding-world'
             />
           </ul>
         </div>
