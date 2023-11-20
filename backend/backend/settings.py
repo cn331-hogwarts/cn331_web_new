@@ -35,7 +35,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-    "http://178.128.125.251:80", #backend
+    "http://localhost:8000", #backend
     "http://localhost:5173" #frontend
 ]
 
@@ -159,9 +159,11 @@ DJOSER = {
     },
 }
 
+#http://localhost:5173/activate/OA/bxyudx-b07605720eb10885307ecccedc312874
+#http://localhost:5173/activate/OA/bxyudx-b07605720eb10885307ecccedc312874
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_USE_TLS = True #false
+EMAIL_USE_TLS = False #false
 EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")

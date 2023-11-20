@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateUserInfo } from '../services/authSlice';
 import '../Profile.css';
 
+import axios from 'axios';
+
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [editableFields, setEditableFields] = useState({
@@ -10,6 +12,7 @@ const Profile = () => {
     last_name: false,
     blood_group: false,
     mbti: false,
+    id:false
   });
 
   const dispatch = useDispatch();
@@ -27,9 +30,15 @@ const Profile = () => {
       [field]: false,
     }));
 
+    updateProfile(field, value);
+  };
+
+  const updateProfile = async (field, value) => {
     const updatedUser = { ...userInfo, [field]: value };
+    const response = await axios.put(`http://localhost:8000/updateUserInfo/user/${userInfo.id}/`, updatedUser);
     dispatch(updateUserInfo(updatedUser));
   };
+
 
   return (
     <div className="page-container">
@@ -46,6 +55,8 @@ const Profile = () => {
         </div>
         <div className="profile-details">
           <div className="profile-item">
+            <span className="profile-label">id: {userInfo.id}</span>
+            <p></p>
             <span className="profile-label">First Name: {userInfo.first_name}</span>
             <p></p>
             <span className="profile-label">Last Name: {userInfo.last_name}</span>
