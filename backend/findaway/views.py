@@ -4,9 +4,6 @@ from . import models
 from . import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
-from django.http import JsonResponse
-from rest_framework.parsers import JSONParser
 
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
