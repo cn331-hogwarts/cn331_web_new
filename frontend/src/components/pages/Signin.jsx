@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { FiBox } from "react-icons/fi";
 
 import { useDispatch, useSelector } from 'react-redux'
-import { login, reset, getUserInfo } from '../services/authSlice';
+import { login, reset, getUserInfo } from '../services/authSlice'
 import { toast } from 'react-toastify'
 import '../Signin.css'
 
@@ -86,4 +86,4 @@ const Signin = () => {
     )
 }
 
-export default Signin
+export default Signin;

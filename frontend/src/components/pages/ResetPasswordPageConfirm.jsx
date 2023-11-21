@@ -6,6 +6,7 @@ import { resetPasswordConfirm } from '../services/authSlice'
 import { AiFillLock } from 'react-icons/ai'
 import '../ResetPasswordPageConfirm.css'
 
+
 const ResetPasswordPageConfirm = () => {
 
     const { uid, token } = useParams()
@@ -88,4 +89,4 @@ const ResetPasswordPageConfirm = () => {
     )
 }
 
-export default ResetPasswordPageConfirm
+export default ResetPasswordPageConfirm;

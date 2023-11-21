@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
     "axios": "^1.6.0",
+    "framer-motion": "^10.16.5",
     "install": "^0.13.0",
     "npm": "^10.2.3",
     "react-bootstrap": "^2.9.1",

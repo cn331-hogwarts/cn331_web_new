@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateUserInfo } from '../services/authSlice';
-import '../Profile.css';
-
-import axios from 'axios';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateUserInfo } from '../services/authSlice'
+import '../Profile.css'
+import axios from 'axios'
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);

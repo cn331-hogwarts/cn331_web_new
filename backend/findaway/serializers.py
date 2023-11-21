@@ -21,4 +21,10 @@ class selectUserSerializer(serializers.ModelSerializer):
         instance.mbti = validated_data.get('mbti', instance.mbti)
         instance.save()
         return instance
+    
+class predictSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
+
 

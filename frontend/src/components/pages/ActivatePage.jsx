@@ -55,4 +55,4 @@ const ActivatePage = () => {
     )
 }
 
-export default ActivatePage
+export default ActivatePage;

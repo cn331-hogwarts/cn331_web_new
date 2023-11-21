@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../register.css'
 
-
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
         "first_name": "",
@@ -122,4 +121,4 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage
+export default RegisterPage;
