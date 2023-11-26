@@ -11,5 +11,5 @@ urlpatterns = [
     path("api/v1/auth/", include('djoser.urls')),
     path("api/v1/auth/", include('djoser.urls.jwt')),
     path('updateUserInfo/', include(router.urls)),
-    path('predict/', views.predict, name='predict'),  # Use 'name' instead of 'basename'
+    path('predict/', views.predict, name='predict'),
 ]

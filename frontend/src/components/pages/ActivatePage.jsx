@@ -32,7 +32,7 @@ const ActivatePage = () => {
         }
 
         if (isSuccess) {
-            navigate("/login")
+            navigate("/")
         }
 
         dispatch(reset())

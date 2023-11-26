@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import '../Profile.css'
-import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography'; 
 
 const Predict = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [result_time,setResult_time]=useState(false);
+  const [resultTime, setResultTime] = useState(false);
 
   const handleButtonClick = async () => {
     try {
@@ -23,7 +24,7 @@ const Predict = () => {
     } finally {
       setTimeout(() => {
         setLoading(false);
-        setResult_time(true);
+        setResultTime(true);
       }, 2000);
     }
   };
@@ -33,30 +34,51 @@ const Predict = () => {
       <div className="header-container"></div>
       <div className="profile-container">
         <div className="profile-header">
-          <h1 className="profile-title">User Profile</h1>
+          <Typography variant="h4" className="predict-title">
+            User Profile
+          </Typography>
         </div>
         <div className="profile-details">
           <div className="profile-item">
-            <span className="profile-label">id: {userInfo.id}</span>
+            <Typography variant="body1" style={{ color: 'black' }}>
+              Id: {userInfo.id}
+            </Typography>
             <p></p>
-            <span className="profile-label">First Name: {userInfo.first_name}</span>
+            <Typography variant="body1" style={{ color: 'black' }}>
+              First Name: {userInfo.first_name}
+            </Typography>
             <p></p>
-            <span className="profile-label">Last Name: {userInfo.last_name}</span>
+            <Typography variant="body1" style={{ color: 'black' }}>
+              Last Name: {userInfo.last_name}
+            </Typography>
             <p></p>
-            <span className="profile-value">{userInfo.email}</span>
+            <Typography variant="body1" style={{ color: 'black' }}>
+              Email: {userInfo.email}
+            </Typography>
             <p></p>
-            <button onClick={() => handleButtonClick(userInfo)}>
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={() => handleButtonClick(userInfo)}
+              style={{
+                color: 'black',
+                borderColor: 'black',
+              }}
+            >
               {loading ? (
                 <CircularProgress size={20} color="inherit" />
               ) : (
                 'Predict'
               )}
-            </button>
+            </Button>
+            <p></p>
 
-            {result !== null &&result_time&& (
+            {result !== null && resultTime && (
               <div>
-                <p>Result:</p>
-                <span>{result}</span>
+                <Typography variant="body1">Result:</Typography>
+                <Typography variant="body1" style={{ color: 'black' }}>
+                  {result}
+                </Typography>
               </div>
             )}
 

@@ -40,7 +40,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -159,18 +158,17 @@ DJOSER = {
     },
 }
 
-#http://localhost:5173/activate/OA/bxyudx-b07605720eb10885307ecccedc312874
-#http://localhost:5173/activate/OA/bxyudx-b07605720eb10885307ecccedc312874
+#open /Applications/Python\ 3.12/Install\ Certificates.command
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_USE_TLS = False #false
 EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "info@findaway.com"
+EMAIL_HOST_PASSWORD =env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "kun.kerdthaisong@gmail.com"
 DOMAIN = env("DOMAIN")
 SITE_NAME = "findaway"
-EMAIL_USE_SSL = False
 
 STATIC_URL = 'static/'
 

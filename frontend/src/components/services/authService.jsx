@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BACKEND_DOMAIN = "http://localhost:8000" //https backend
+const BACKEND_DOMAIN ="http://localhost:8000"//https backend
 
 const REGISTER_URL = `${BACKEND_DOMAIN}/api/v1/auth/users/`
 const LOGIN_URL = `${BACKEND_DOMAIN}/api/v1/auth/jwt/create/`

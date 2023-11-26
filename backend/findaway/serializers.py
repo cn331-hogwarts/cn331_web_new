@@ -22,9 +22,5 @@ class selectUserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
     
-class predictSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['email']
 
 

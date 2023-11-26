@@ -4,13 +4,12 @@ from . import models
 from . import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .management.commands import export_to_csv
 
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import preprocessing
 import numpy as np
-
-
 
 
 
@@ -30,9 +29,9 @@ class UserViewSet(viewsets.ModelViewSet):
 @api_view(["POST"])
 def predict(request):
     try:
-        # to predict
         mydata = request.data  # admin@gmail.com #str
         print(mydata["email"])
+        export_to_csv.export_users_to_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv")
         df = pd.read_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv", index_col="email")
         # should run python manage.py exportUsers /Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv
         # change path

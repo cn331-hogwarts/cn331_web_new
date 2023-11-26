@@ -22,7 +22,7 @@
     border: 1px solid #2a2929;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(188, 89, 218, 0.9);
+    background-color: rgba(211, 136, 234, 0.9);
     text-align: left;
 }
 
@@ -33,7 +33,7 @@
 
 .profile-title {
     color: #000000;
-    font-size: 24px;
+   
 }
 
 .profile-details {
@@ -41,15 +41,6 @@
     flex-direction: column;
 }
 
-.profile-item {
-    margin-bottom: 10px;
-}
-
 .profile-label {
-    font-weight: bold;
-    color: #000000;
-}
-
-.profile-value {
-    color: #333;
+    margin-top: 10px;
 }

@@ -76,9 +76,11 @@ const Navbar=()=> {
               ):null}
             </li>
             <li className='nav-item'>
-              <Link to='/predict' className='nav-links' onClick={closeMobileMenu}>
+              {user ? (<Link to='/predict' className='nav-links' onClick={closeMobileMenu}>
                 find someone
               </Link>
+              ): null }
+
             </li>
 
             <li>
@@ -90,9 +92,9 @@ const Navbar=()=> {
             </li>
           </ul>
           {user ?(
-            <Button buttonStyle='btn--outline' button_link='/' onClick={handleLogout}>signout</Button>
+            <Button buttonStyle='btn--outline' button_link='/' onClick={handleLogout}>Sign Out</Button>
           ): 
-            button && <Button buttonStyle='btn--outline' button_link='/signin' >signin</Button>}
+            button && <Button buttonStyle='btn--outline' button_link='/signin' >Sign In</Button>}
         </div>
       </nav>
     </>
