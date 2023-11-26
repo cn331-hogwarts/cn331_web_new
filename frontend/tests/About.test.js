@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom'; // Import the library
+import '@testing-library/jest-dom';
 
 import About from '../src/components/pages/About';
 
@@ -16,12 +16,9 @@ test('renders about page content', () => {
   expect(membersTitle).toBeInTheDocument();
   expect(githubReposTitle).toBeInTheDocument();
 
-  // Assert the number of elements with the text "tracker"
   expect(trackerTitles).toHaveLength(2);
 
-  // If you need to perform additional assertions on each tracker element:
   trackerTitles.forEach((trackerTitle) => {
     expect(trackerTitle).toBeInTheDocument();
-    // Add more expectations as needed
   });
 });

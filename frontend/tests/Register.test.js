@@ -38,7 +38,6 @@ describe('RegisterPage Component', () => {
     const retypePasswordInput = getByPlaceholderText('Retype Password');
     const registerButton = getByText('Register');
 
-    // Example: You can interact with the form elements using fireEvent
     fireEvent.change(firstNameInput, { target: { value: 'John' } });
     fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
     fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
@@ -47,7 +46,6 @@ describe('RegisterPage Component', () => {
 
     fireEvent.click(registerButton);
 
-    // Add assertions here based on your component behavior
     expect(getByPlaceholderText('First Name')).toBeInTheDocument();
     expect(getByPlaceholderText('Last Name')).toBeInTheDocument();
     expect(getByPlaceholderText('Email')).toBeInTheDocument();
@@ -57,5 +55,4 @@ describe('RegisterPage Component', () => {
 
   });
 
-  // Add more test cases as needed
 });

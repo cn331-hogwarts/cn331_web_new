@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter for testing routes
+import { MemoryRouter } from 'react-router-dom';
 import App from '../src/App';
 
 test('renders Navbar', () => {
@@ -70,5 +70,3 @@ test('renders Register page', () => {
     </MemoryRouter>
   );
 });
-
-// Add more test cases for other routes as needed

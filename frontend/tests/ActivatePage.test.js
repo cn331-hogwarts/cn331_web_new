@@ -32,11 +32,9 @@ describe('ActivatePage Component', () => {
       </Provider>
     );
 
-    // Check if the main title is rendered
     const mainTitleElement = screen.getByText(/Activate Account/i);
     expect(mainTitleElement).toBeInTheDocument();
 
-    // Check if the "Activate Account" button is rendered
     const activateButton = screen.getByText(/Activate Account/i);
     expect(activateButton).toBeInTheDocument();
   });
@@ -52,15 +50,11 @@ describe('ActivatePage Component', () => {
       </Provider>
     );
 
-    // Mock the activate action
     store.dispatch = jest.fn();
 
-    // Click the "Activate Account" button
     fireEvent.click(screen.getByText(/Activate Account/i));
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the activate action was dispatched
       expect(store.dispatch).toHaveBeenCalledWith(
         activate({
           uid: 'uid',

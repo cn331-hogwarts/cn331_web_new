@@ -29,11 +29,9 @@ describe('Predict Component', () => {
       </Provider>
     );
 
-    // Check if the main title is rendered
     const mainTitleElement = screen.getByText(/User Profile/i);
     expect(mainTitleElement).toBeInTheDocument();
 
-    // Check if the "Predict" button is rendered
     const predictButton = screen.getByText(/Predict/i);
     expect(predictButton).toBeInTheDocument();
   });
@@ -45,24 +43,19 @@ describe('Predict Component', () => {
       </Provider>
     );
 
-    // Mock the axios.post function
     jest.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve('prediction_result'),
       })
     );
 
-    // Click the "Predict" button
     fireEvent.click(screen.getByText(/Predict/i));
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the result is displayed
       const resultElement = screen.getByText(/Result:/i);
       expect(resultElement).toBeInTheDocument();
     });
 
-    // Restore the original fetch function
     global.fetch.mockRestore();
   });
 });

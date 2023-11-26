@@ -30,11 +30,9 @@ describe('ResetPasswordPageConfirm Component', () => {
       </Provider>
     );
 
-    // Check if the main title is rendered
     const mainTitleElement = screen.getByText(/Reset Password here/i);
     expect(mainTitleElement).toBeInTheDocument();
 
-    // Check if the "Reset Password" button is rendered
     const resetPasswordButton = screen.getByText(/Reset Password/i);
     expect(resetPasswordButton).toBeInTheDocument();
   });
@@ -48,22 +46,17 @@ describe('ResetPasswordPageConfirm Component', () => {
       </Provider>
     );
 
-    // Fill out the form
     const newPasswordInput = screen.getByPlaceholderText(/New password/i);
     const confirmNewPasswordInput = screen.getByPlaceholderText(/Confirm new password/i);
     
     fireEvent.change(newPasswordInput, { target: { value: 'newpassword' } });
     fireEvent.change(confirmNewPasswordInput, { target: { value: 'newpassword' } });
 
-    // Mock the resetPasswordConfirm action
     store.dispatch = jest.fn();
 
-    // Click the "Reset Password" button
     fireEvent.click(screen.getByText(/Reset Password/i));
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the resetPasswordConfirm action was dispatched
       expect(store.dispatch).toHaveBeenCalledWith(
         resetPasswordConfirm({
           uid: 'testuid',

@@ -34,7 +34,6 @@ describe('Profile Component', () => {
       </Provider>
     );
 
-    // Check if the user profile details are rendered
     const profileTitle = screen.getByText(/User Profile/i);
     const idLabel = screen.getByText(/id:/i);
     const firstNameLabel = screen.getByText(/First Name:/i);
@@ -51,7 +50,6 @@ describe('Profile Component', () => {
     expect(mbtiLabel).toBeInTheDocument();
     expect(emailLabel).toBeInTheDocument();
 
-    // Check if the user details are displayed correctly
     expect(screen.getByText(/id: 1/i)).toBeInTheDocument();
     expect(screen.getByText(/First Name: John/i)).toBeInTheDocument();
     expect(screen.getByText(/Last Name: Doe/i)).toBeInTheDocument();
@@ -67,47 +65,34 @@ describe('Profile Component', () => {
       </Provider>
     );
 
-    // Click the "Edit" button for Blood Group
     fireEvent.click(screen.getByText(/Edit/i));
 
-    // Check if the select element is rendered
     const bloodGroupSelect = screen.getByRole('combobox', { name: /Blood Group:/i });
     expect(bloodGroupSelect).toBeInTheDocument();
 
-    // Select a different blood group
     fireEvent.change(bloodGroupSelect, { target: { value: 'B' } });
 
-    // Click the "Edit" button for MBTI
     fireEvent.click(screen.getByText(/Edit/i));
 
-    // Check if the select element for MBTI is rendered
     const mbtiSelect = screen.getByRole('combobox', { name: /MBTI:/i });
     expect(mbtiSelect).toBeInTheDocument();
 
-    // Select a different MBTI type
     fireEvent.change(mbtiSelect, { target: { value: 'ISFP' } });
 
-    // Mock the axios.put function
     axios.put.mockResolvedValue({});
 
-    // Click the "Edit" button again to submit changes for Blood Group
     fireEvent.click(screen.getByText(/Edit/i));
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the updateProfile function was called with the correct arguments
       expect(axios.put).toHaveBeenCalledWith('http://localhost:8000/updateUserInfo/user/1/', {
         ...store.getState().auth.userInfo,
         blood_group: 'B',
       });
     });
 
-    // Click the "Edit" button again to submit changes for MBTI
     fireEvent.click(screen.getByText(/Edit/i));
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the updateProfile function was called with the correct arguments
       expect(axios.put).toHaveBeenCalledWith('http://localhost:8000/updateUserInfo/user/1/', {
         ...store.getState().auth.userInfo,
         mbti: 'ISFP',

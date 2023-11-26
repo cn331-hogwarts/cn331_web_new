@@ -31,11 +31,9 @@ describe('Signin Component', () => {
       </Provider>
     );
 
-    // Check if the main title is rendered
     const mainTitleElement = screen.getByText(/Sign in/i);
     expect(mainTitleElement).toBeInTheDocument();
 
-    // Check if form inputs are rendered
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/password/i);
     const signinButton = screen.getByText(/signin/i);
@@ -54,7 +52,6 @@ describe('Signin Component', () => {
       </Provider>
     );
 
-    // Fill out the form
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/password/i);
     const signinButton = screen.getByText(/signin/i);
@@ -62,15 +59,11 @@ describe('Signin Component', () => {
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.change(passwordInput, { target: { value: 'password123' } });
 
-    // Mock the login action
     store.dispatch = jest.fn();
 
-    // Click the signin button
     fireEvent.click(signinButton);
 
-    // Wait for the asynchronous actions to complete
     await waitFor(() => {
-      // Check if the login action was dispatched
       expect(store.dispatch).toHaveBeenCalledWith(
         login({
           email: 'test@example.com',
