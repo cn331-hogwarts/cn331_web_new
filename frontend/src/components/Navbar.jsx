@@ -90,9 +90,9 @@ const Navbar=()=> {
             </li>
           </ul>
           {user ?(
-            <Button buttonStyle='btn--outline' button_link='/' onClick={handleLogout}>signout</Button>
+            <Button buttonStyle='btn--outline' button_link='/' onClick={handleLogout}>Sign Out</Button>
           ): 
-            button && <Button buttonStyle='btn--outline' button_link='/signin' >signin</Button>}
+            button && <Button buttonStyle='btn--outline' button_link='/signin' >Sign In</Button>}
         </div>
       </nav>
     </>

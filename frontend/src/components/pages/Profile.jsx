@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateUserInfo } from '../services/authSlice'
-import '../Profile.css'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUserInfo } from '../services/authSlice';
+import { Typography, Button, Select, MenuItem } from '@mui/material';
+import '../Profile.css';
+import axios from 'axios';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -11,7 +12,7 @@ const Profile = () => {
     last_name: false,
     blood_group: false,
     mbti: false,
-    id:false
+    id: false,
   });
 
   const dispatch = useDispatch();
@@ -38,86 +39,84 @@ const Profile = () => {
     dispatch(updateUserInfo(updatedUser));
   };
 
-
   return (
-    <div className="page-container">
-      <div className="header-container">
-        <img
-          src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-01/210602-doge-meme-nft-mb-1715-8afb7e.jpg"
-          alt="Header Image"
-          className="header-image"
-        />
-      </div>
+    <div className="page-container" >
       <div className="profile-container">
         <div className="profile-header">
-          <h1 className="profile-title">User Profile</h1>
+          <Typography  variant="h4" className="profile-title">
+            User Profile
+          </Typography>
         </div>
         <div className="profile-details">
           <div className="profile-item">
-            <span className="profile-label">id: {userInfo.id}</span>
+            <Typography variant="body1" className="profile-label">
+              Id: {userInfo.id}
+            </Typography>
             <p></p>
-            <span className="profile-label">First Name: {userInfo.first_name}</span>
+            <Typography variant="body1" className="profile-label">
+              First Name: {userInfo.first_name}
+            </Typography>
             <p></p>
-            <span className="profile-label">Last Name: {userInfo.last_name}</span>
+            <Typography variant="body1" className="profile-label">
+              Last Name: {userInfo.last_name}
+            </Typography>
           </div>
-          <span className="profile-label">
-        Blood Group:{' '}
-        {editableFields.blood_group ? (
-          <select
-            value={userInfo.blood_group}
-            onChange={(e) => handleInputChange('blood_group', e.target.value)}
-          >
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="AB">AB</option>
-            <option value="O">O</option>
-          </select>
-        ) : (
-          <>
-            {userInfo.blood_group}{' '}
-            <button onClick={() => handleButtonClick('blood_group')}>Edit</button>
-          </>
-        )}
-      </span>
-      <span className="profile-label">
-        MBTI:{' '}
-        {editableFields.mbti ? (
-          <select
-            value={userInfo.mbti}
-            onChange={(e) => handleInputChange('mbti', e.target.value)}
-          >
-            <option value="ISTJ">ISTJ</option>
-            <option value="ISFJ">ISFJ</option>
-            <option value="INFJ">INFJ</option>
-            <option value="INTJ">INTJ</option>
-
-            <option value="ISTP">ISTP</option>
-            <option value="ISFJ">ISFJ</option>
-            <option value="ISFP">ISFP</option>
-            <option value="INFP">INFP</option>
-
-
-            <option value="INTP">INTP</option>
-            <option value="ESTP">ESTP</option>
-            <option value="ESFP">ESFP</option>
-            <option value="ENFP">ENFP</option>
-
-
-            <option value="ESTJ">ESTJ</option>
-            <option value="ESFJ">ESFJ</option>
-            <option value="ENFJ">ENFJ</option>
-            <option value="ENTJ">ENTJ</option>
-          </select>
-        ) : (
-          <>
-            {userInfo.mbti}{' '}
-            <button onClick={() => handleButtonClick('mbti')}>Edit</button>
-          </>
-        )}
-      </span>
+          <Typography variant="body1" className="profile-label">
+            Blood Group:{' '}
+            {editableFields.blood_group ? (
+              <Select
+                value={userInfo.blood_group}
+                onChange={(e) => handleInputChange('blood_group', e.target.value)}
+              >
+                <MenuItem value="A">A</MenuItem>
+                <MenuItem value="B">B</MenuItem>
+                <MenuItem value="AB">AB</MenuItem>
+                <MenuItem value="O">O</MenuItem>
+              </Select>
+            ) : (
+              <>
+                {userInfo.blood_group}{' '}
+                <Button
+                  variant="outlined"
+                  size="small"
+                  style={{ fontSize: 'small', padding: '5px', borderColor: 'black', color: 'black' }}
+                  onClick={() => handleButtonClick('blood_group')}
+                >
+                  Edit
+                </Button>
+              </>
+            )}
+          </Typography>
+          <Typography variant="body1" className="profile-label">
+            MBTI:{' '}
+            {editableFields.mbti ? (
+              <Select
+                value={userInfo.mbti}
+                onChange={(e) => handleInputChange('mbti', e.target.value)}
+              >
+                <MenuItem value="ISTJ">ISTJ</MenuItem>
+                <MenuItem value="ISFJ">ISFJ</MenuItem>
+                <MenuItem value="INFJ">INFJ</MenuItem>
+                <MenuItem value="INTJ">INTJ</MenuItem>
+              </Select>
+            ) : (
+              <>
+                {userInfo.mbti}{' '}
+                <Button
+                  variant="outlined"
+                  size="small"
+                  style={{ fontSize: 'small', padding: '5px', borderColor: 'black', color: 'black' }}
+                  onClick={() => handleButtonClick('mbti')}
+                >
+                  Edit
+                </Button>
+              </>
+            )}
+          </Typography>
           <div className="profile-item">
-            <span className="profile-label">Email: </span>
-            <span className="profile-value">{userInfo.email}</span>
+            <Typography variant="body1" className="profile-label">
+              Email: {userInfo.email}
+            </Typography>
           </div>
         </div>
       </div>

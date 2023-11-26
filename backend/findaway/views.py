@@ -36,7 +36,7 @@ def predict(request):
         # to predict
         mydata = request.data  # admin@gmail.com #str
         print(mydata["email"])
-        df = pd.read_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv", index_col="email")
+        df = pd.read_csv("/Users/Prin/Documents/Coding/Cn331/cn331_web_new/backend/data.csv", index_col="email")
         # should run python manage.py exportUsers /Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv
         # change path
         df['blood_group'] = df['blood_group'].astype("category")
