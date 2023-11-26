@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import preprocessing
 import numpy as np
-
+import os
 
 
 
@@ -36,7 +36,8 @@ def predict(request):
         # to predict
         mydata = request.data  # admin@gmail.com #str
         print(mydata["email"])
-        df = pd.read_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv", index_col="email")
+        print(os.getcwd())
+        df = pd.read_csv("/Users/Aumuimamu/Workfile/CN331/TestingFront2/backend/data.csv", index_col="email")
         # should run python manage.py exportUsers /Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv
         # change path
         df['blood_group'] = df['blood_group'].astype("category")
