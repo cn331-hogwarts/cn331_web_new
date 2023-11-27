@@ -88,9 +88,9 @@ font-size: 20px;
 line-height: 24px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
 .content__blog__container {
-width: 100%;
+width: 60%;
 }
 }
 

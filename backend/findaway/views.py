@@ -29,7 +29,7 @@ class UserViewSet(viewsets.ModelViewSet):
 @api_view(["POST"])
 def predict(request):
     try:
-        mydata = request.data  # admin@gmail.com #str
+        mydata = request.data  # ex:admin@gmail.com
         print(mydata["email"])
         export_to_csv.export_users_to_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv")
         df = pd.read_csv("/Users/kunkerdthaisong/cn331/cn331_web_new/backend/data.csv", index_col="email")
@@ -41,11 +41,12 @@ def predict(request):
 
         df_new = df.apply(le.fit_transform)
         df_new = df_new.drop(columns=["first_name", "last_name", "Is_Staff", "Is_Active", "date_joined"])
-
-        knn_c = KNeighborsClassifier(n_neighbors=2)
+        want_pred=df_new.loc[mydata["email"]]
+        df_new=df_new.drop(index=mydata["email"])
+        knn_c = KNeighborsClassifier(n_neighbors=3)
         knn_c.fit(df_new, df_new.index)
 
-        res = knn_c.predict(np.asarray([df_new.loc[mydata["email"]]]))
+        res = knn_c.predict(np.asarray([want_pred]))
         email = res[0]
         print(email)
         return Response('Your mate is {}'.format(email))

@@ -15,7 +15,6 @@ import ResetPasswordPageConfirm from './components/pages/ResetPasswordPageConfir
 import Predict from './components/pages/Predict'
 import Footer from './components/Footer'
 import Cursor from './components/Cursor'
-import { AnimatePresence } from 'framer-motion'
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
   return (
     <>
       <Router>
-      <AnimatePresence>
       <Cursor/>
         <Navbar />
         <Routes>
@@ -38,7 +36,6 @@ function App() {
           <Route path="/password/reset/confirm/:uid/:token" exact element={<ResetPasswordPageConfirm/>} />
         </Routes>
       <Footer/>
-      </AnimatePresence>
       </Router>
       <ToastContainer/>
     </>

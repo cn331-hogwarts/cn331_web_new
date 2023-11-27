@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography'; 
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import "../Predict.css"
+
+// images
+import river from '../../assets/images/river.jpg';
+import town from '../../assets/images/town.png';
+import hill from '../../assets/images/hill.jpg';
 
 const Predict = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [resultTime, setResultTime] = useState(false);
 
   const handleButtonClick = async () => {
     try {
@@ -18,75 +23,51 @@ const Predict = () => {
         email: userInfo.email,
       });
       setResult(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error('Error predicting:', error.message);
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-        setResultTime(true);
-      }, 2000);
     }
   };
 
+  const parallaxStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  };
+  const ref=useRef();
+
   return (
-    <div className="page-container">
-      <div className="header-container"></div>
-      <div className="profile-container">
-        <div className="profile-header">
-          <Typography variant="h4" className="predict-title">
-            User Profile
-          </Typography>
-        </div>
-        <div className="profile-details">
-          <div className="profile-item">
-            <Typography variant="body1" style={{ color: 'black' }}>
-              Id: {userInfo.id}
-            </Typography>
-            <p></p>
-            <Typography variant="body1" style={{ color: 'black' }}>
-              First Name: {userInfo.first_name}
-            </Typography>
-            <p></p>
-            <Typography variant="body1" style={{ color: 'black' }}>
-              Last Name: {userInfo.last_name}
-            </Typography>
-            <p></p>
-            <Typography variant="body1" style={{ color: 'black' }}>
-              Email: {userInfo.email}
-            </Typography>
-            <p></p>
-            <Button
-              size="small"
-              variant="outlined"
-              onClick={() => handleButtonClick(userInfo)}
-              style={{
-                color: 'black',
-                borderColor: 'black',
-              }}
-            >
-              {loading ? (
-                <CircularProgress size={20} color="inherit" />
-              ) : (
-                'Predict'
-              )}
-            </Button>
-            <p></p>
+      <Parallax pages={3} style={parallaxStyle} ref={ref}>
+        <ParallaxLayer offset={0} key={1} speed={0.02}factor={1} onClick={() => {ref.current.scrollTo(1)}} 
+          style={{backgroundImage:`url(${river})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={() => handleButtonClick(userInfo)}
+            style={{
+              color: 'white',
+              borderColor: 'black',
+            }}
+          >
+            predict
+          </Button>
+            <h1>asdasldkpasodkpaosk</h1>
+        </ParallaxLayer>
 
-            {result !== null && resultTime && (
-              <div>
-                <Typography variant="body1">Result:</Typography>
-                <Typography variant="body1" style={{ color: 'black' }}>
-                  {result}
-                </Typography>
-              </div>
-            )}
+        <ParallaxLayer
+        offset={1} key={2} speed={0.09} factor={1} onClick={() => {ref.current.scrollTo(2)}} style={{backgroundImage:`url(${hill})`,backgroundSize:'cover', alignItems: 'center'}}>
+          <h1>qweokdlkasdlkamsldkmalskdpoqpwoepoqwe</h1>
+        </ParallaxLayer>
 
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
+
+        <ParallaxLayer offset={2} key={3} speed={0}  factor={1} onClick={() => {ref.current.scrollTo(0)}} style={{backgroundImage:`url(${town})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <h1>asdpkpqowepoqwpeoqpwoepoqwe</h1>
+          <h2>{result}</h2>
+        </ParallaxLayer>
+      
+      </Parallax>
   );
 };
 

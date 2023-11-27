@@ -1,9 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('https://i.pinimg.com/originals/8b/3c/4f/8b3c4f0f972b936fae0c888c5e5ede98.jpg') no-repeat center center fixed;
+    padding-bottom: 0;
     background-size: cover;
+    background-color: #130751;
     font-family: 'Your Font', sans-serif;
+    z-index: 0;
 }
 
 .body-info {

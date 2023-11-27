@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateUserInfo } from '../services/authSlice';
-import { Typography, Button, Select, MenuItem } from '@mui/material';
-import '../Profile.css';
-import axios from 'axios';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateUserInfo } from '../services/authSlice'
+import { Typography, Button, Select, MenuItem } from '@mui/material'
+import '../Profile.css'
+import axios from 'axios'
+import Modal_consent from '../Modal_consent'
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -39,8 +40,14 @@ const Profile = () => {
     dispatch(updateUserInfo(updatedUser));
   };
 
+  const [openModal, setOpenModal] = useState(true);
+
+
   return (
-    <div className="page-container" >
+    <div className='page-container'>
+       <div>
+      <Modal_consent open={openModal} onClose={() => setOpenModal(false)} />
+      </div>
       <div className="profile-container">
         <div className="profile-header">
           <Typography  variant="h4" className="profile-title">
