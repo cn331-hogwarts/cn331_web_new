@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 70vh;
     background-image: url("https://i.pinimg.com/originals/8b/3c/4f/8b3c4f0f972b936fae0c888c5e5ede98.jpg");
     background-size: cover;
     background-position: center;
@@ -72,6 +72,6 @@ Link:hover {
 
 @media (max-width: 768px) {
     .auth__container {
-        width: 80%;
+        width: 40%;
     }
 }

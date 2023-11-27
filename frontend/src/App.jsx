@@ -24,8 +24,8 @@ function App() {
     <>
       <Router>
       <AnimatePresence>
+      <Cursor/>
         <Navbar />
-        <Cursor/>
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/about' exact element={<About/>}/>

@@ -1,6 +1,6 @@
-# yourapp/management/commands/exportusers.py
+
 from django.core.management.base import BaseCommand
-from .export_to_csv import export_users_to_csv  # Adjust the import statement
+from .export_to_csv import export_users_to_csv
 
 class Command(BaseCommand):
     help = 'Export User data to a CSV file'
