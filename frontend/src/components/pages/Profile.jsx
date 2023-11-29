@@ -5,6 +5,7 @@ import { Typography, Button, Select, MenuItem } from '@mui/material'
 import '../Profile.css'
 import axios from 'axios'
 import Modal_consent from '../Modal_consent'
+import ParticleBg from '../ParticleBg'
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -140,8 +141,13 @@ const Profile = () => {
             <Typography variant="body1" className="profile-label">
               Email: {userInfo.email}
             </Typography>
+            <div>
+
+            <ParticleBg/>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   );

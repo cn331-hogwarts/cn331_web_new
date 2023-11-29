@@ -1,20 +1,48 @@
 import React, { useState,useRef } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
+import { motion } from 'framer-motion';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { GoChevronDown } from "react-icons/go";
 import "../Predict.css"
+import ParticleBg2 from "../ParticleBg2"
+import ParticleBg3 from "../ParticleBg3"
+import ParticleBg4 from '../ParticleBg4'
 
 // images
-import river from '../../assets/images/river.jpg';
-import town from '../../assets/images/town.png';
-import hill from '../../assets/images/hill.jpg';
+//p_river
+import river_p2 from '../../assets/images/p_river/a2.png'
+import river_p3 from '../../assets/images/p_river/a3.png'
+import river_p4 from '../../assets/images/p_river/a4.png'
+import river_p5 from '../../assets/images/p_river/a5.png'
+
+//p_hill
+import hill_p1 from '../../assets/images/p_hill/a1.png'
+import hill_p2 from '../../assets/images/p_hill/a2.png'
+import hill_p3 from '../../assets/images/p_hill/a3.png'
+
+
+import pond from '../../assets/images/pond.jpg'
+import forest from '../../assets/images/bg.png'
+
+//p_town
+//import town from '../../assets/images/town.png'
+import town_p2 from '../../assets/images/p_town/a2.png'
+import town_p3 from '../../assets/images/p_town/a3.png'
+import town_p4 from '../../assets/images/p_town/a4.png'
+import town_p5 from '../../assets/images/p_town/a5.png'
+import town_p6 from '../../assets/images/p_town/a6.png'
+import town_p7 from '../../assets/images/p_town/a7.png'
+import town_p8 from '../../assets/images/p_town/a8.png'
+
 
 const Predict = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+
+  const [showScrollDownText, setShowScrollDownText] = useState(false);
 
   const handleButtonClick = async () => {
     try {
@@ -23,26 +51,45 @@ const Predict = () => {
         email: userInfo.email,
       });
       setResult(response.data);
+      setShowScrollDownText(true);
     } catch (error) {
       console.error('Error predicting:', error.message);
     }
   };
 
   const parallaxStyle = {
-    position: 'absolute',
+    position:'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
   };
+
   const ref=useRef();
 
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.4 } },
+  };
+
   return (
-      <Parallax pages={3} style={parallaxStyle} ref={ref}>
-        <ParallaxLayer offset={0} key={1} speed={0.02}factor={1} onClick={() => {ref.current.scrollTo(1)}} 
-          style={{backgroundImage:`url(${river})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          
-          <Button
+      <Parallax pages={10} style={parallaxStyle} ref={ref}>
+        <ParallaxLayer offset={0} key={1} speed={0.05}factor={1} 
+          style={{backgroundImage:`url(${river_p5})`,backgroundPositionY:'70px',backgroundSize:'1600px'}}>
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.12} key={1} speed={0.2} factor={1} style={{backgroundImage:`url(${river_p4})`,backgroundPositionX:'120px',backgroundSize:'1600px'}}>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={0.4} key={1} speed={0.4} factor={1} style={{backgroundImage:`url(${river_p3})`,backgroundPositionX:'20px',backgroundSize:'1400px'}}>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={0.3} key={1} speed={0.3} factor={1} style={{backgroundImage:`url(${river_p2})`,backgroundPositionX:'-180px',backgroundSize:'1600px',zIndex:1}}
+        >
+        <motion.div variants={titleVariants} initial="hidden" animate="visible">
+          <h1 className='findaway-title' style={{color:"white",fontSize:100}}>findaway</h1>
+        </motion.div>
+
+        <Button
             size="small"
             variant="outlined"
             onClick={() => handleButtonClick(userInfo)}
@@ -53,20 +100,87 @@ const Predict = () => {
           >
             predict
           </Button>
-            <h1>asdasldkpasodkpaosk</h1>
+
+          {showScrollDownText && <motion.div variants={titleVariants} initial="hidden" animate="visible">
+          <h1 style={{color:"white",fontSize:20,marginTop:130,fontFamily:"Cursive"}}>scroll down 🪽</h1>
+          <GoChevronDown style={{ color: 'white' ,fontSize:40}} />
+        </motion.div>}
         </ParallaxLayer>
+
+        <ParallaxLayer offset={1} key={2} speed={0} factor={3} style={{backgroundColor:'black',backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        {showScrollDownText && <motion.div variants={titleVariants} initial="hidden" animate="visible">
+        <ParticleBg2 id='1'/>
+         <h1 style={{color:"white",fontSize:100,fontFamily:"Cursive"}}>keep going, something is happening</h1>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h1 style={{color:"white",fontSize:20,marginTop:130,fontFamily:"Cursive"}}>scroll down 🪽</h1>
+          <GoChevronDown style={{ color: 'white' ,fontSize:40}} />
+        </motion.div>}
+        </ParallaxLayer>
+
+
 
         <ParallaxLayer
-        offset={1} key={2} speed={0.09} factor={1} onClick={() => {ref.current.scrollTo(2)}} style={{backgroundImage:`url(${hill})`,backgroundSize:'cover', alignItems: 'center'}}>
-          <h1>qweokdlkasdlkamsldkmalskdpoqpwoepoqwe</h1>
+        offset={2.8} key={4} speed={0.1} factor={1} style={{backgroundImage:`url(${hill_p3})`,backgroundSize:'1400px' ,backgroundPositionX:'100px',backgroundPositionY:'260px',zIndex:1}}>
+        </ParallaxLayer>
+        <ParallaxLayer
+        offset={3} key={4} speed={0.5} factor={1} style={{backgroundImage:`url(${hill_p1})`,backgroundPositionX:'10px',backgroundSize:'1600px',backgroundPositionY:'-100px',zIndex:2}}>
+         {showScrollDownText ? (
+          <div>
+            <br></br>
+            <h1 style={{ color: "white", fontSize: 100, marginTop: 130, fontFamily: "Cursive" }}>
+              nothing here ,but you need to keep searching
+            </h1>
+          </div>
+          ) : (
+          <p style={{ color: 'white', fontSize: 100, fontFamily: "Cursive"}}>
+              nothing here
+          </p>
+          )}
+        </ParallaxLayer>
+        <ParallaxLayer
+        offset={3} key={4} speed={0.3} factor={1} style={{backgroundImage:`url(${hill_p2})`,backgroundSize:'700px' ,backgroundPositionX:'500px',backgroundPositionY:'230px',zIndex:1}}>
+        </ParallaxLayer>
+        
+        <ParallaxLayer offset={4} key={2} speed={0} factor={1} style={{backgroundColor:'black',backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        {showScrollDownText && <motion.div variants={titleVariants} initial="hidden" animate="visible">
+         <h1 style={{color:"white",fontSize:100,fontFamily:"Cursive"}}>. . . finally</h1>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h1 style={{color:"white",fontSize:20,marginTop:130,fontFamily:"Cursive"}}>scroll down 🪽</h1>
+          <GoChevronDown style={{ color: 'white' ,fontSize:40}} />
+        </motion.div>}
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={5} key={4} speed={0} factor={1} style={{backgroundImage:`url(${pond})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <ParticleBg3/>
+          <div>
+            <h2 style={{color:'white' ,fontSize:40 ,zIndex:100}}>{result}</h2>
+          </div>
+        </ParallaxLayer>
+        
+        <ParallaxLayer offset={5} key={4} speed={0.2} factor={1.3}  style={{backgroundImage:`url(${forest})`,backgroundSize:'cover',position:'fixed'}}>
         </ParallaxLayer>
 
 
-        <ParallaxLayer offset={2} key={3} speed={0}  factor={1} onClick={() => {ref.current.scrollTo(0)}} style={{backgroundImage:`url(${town})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <h1>asdpkpqowepoqwpeoqpwoepoqwe</h1>
-          <h2>{result}</h2>
+        <ParallaxLayer offset={7} key={4} speed={0.1} factor={1}  style={{backgroundImage:`url(${town_p6})`,backgroundSize:'1600px'}}>
         </ParallaxLayer>
-      
+        <ParallaxLayer offset={7} key={1} speed={0.24} factor={1} style={{backgroundImage:`url(${town_p8})`,backgroundPositionY:'100px',backgroundPositionX:'100px',backgroundSize:'1600px'}}>
+        </ParallaxLayer>
+        <ParallaxLayer offset={7} key={1} speed={0.4} factor={1} style={{backgroundImage:`url(${town_p7})`,backgroundPositionX:'290px'}}>
+        </ParallaxLayer>
+        <ParallaxLayer offset={7} key={1} speed={0.1} factor={1} style={{backgroundImage:`url(${town_p3})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'330px'}}>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={7} key={1} speed={0.1} factor={1} style={{zIndex:2,backgroundImage:`url(${town_p4})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'490px'}}>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={7.2} key={1} speed={0.1} factor={1} style={{zIndex:1, backgroundImage:`url(${town_p5})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'520px'}}>
+        </ParallaxLayer>
+        <ParallaxLayer offset={7} key={1} speed={0.149} factor={1} style={{zIndex:3, backgroundImage:`url(${town_p2})`,backgroundSize:'300px',backgroundPositionX:'800px',backgroundPositionY:'520px'}}> 
+        </ParallaxLayer>
       </Parallax>
   );
 };
