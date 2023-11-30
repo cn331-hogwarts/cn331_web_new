@@ -37,6 +37,9 @@ def predict(request):
         # change path
         df['blood_group'] = df['blood_group'].astype("category")
         df['mbti'] = df['mbti'].astype("category")
+        df['zodiac']=df['zodiac'].astype("category")
+        df['hobbies']=df['hobbies'].astype('category')
+
         le = preprocessing.LabelEncoder()
 
         df_new = df.apply(le.fit_transform)

@@ -67,12 +67,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     ("Pisces", "Pisces")
 ]
     blood_group=models.CharField(max_length=100,blank=True,choices=bg)
-    #hobbies=models.CharField(max_length=200,default=None,choices=top20_hobbies)
+    hobbies=models.CharField(max_length=200,blank=True,choices=top20_hobbies)
     mbti=models.CharField(max_length=100,blank=True,choices=mbti_types)
-    #zodiac=models.CharField(max_length=100,default=None,choices=zodiac_signs)
+    zodiac=models.CharField(max_length=100,blank=True,choices=zodiac_signs)
     
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name","blood_group","mbti"]
+    REQUIRED_FIELDS = ["first_name", "last_name","blood_group","mbti","hobbies","zodiac"]
 
     objects = CustomUserManager()
 

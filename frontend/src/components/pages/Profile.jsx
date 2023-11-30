@@ -14,6 +14,8 @@ const Profile = () => {
     last_name: false,
     blood_group: false,
     mbti: false,
+    zodiac:false,
+    hobbies:false,
     id: false,
   });
 
@@ -67,6 +69,9 @@ const Profile = () => {
             <p></p>
             <Typography variant="body1" className="profile-label">
               Last Name: {userInfo.last_name}
+            </Typography>
+            <Typography variant="body1" className="profile-label">
+              Email: {userInfo.email}
             </Typography>
           </div>
           <Typography variant="body1" className="profile-label">
@@ -137,19 +142,94 @@ const Profile = () => {
               </>
             )}
           </Typography>
-          <div className="profile-item">
-            <Typography variant="body1" className="profile-label">
-              Email: {userInfo.email}
-            </Typography>
-            <div>
+          <Typography variant="body1" className="profile-label">
+            Zodiac:{' '}
+            {editableFields.zodiac ? (
+              <Select
+                value={userInfo.zodiac}
+                onChange={(e) => handleInputChange('zodiac', e.target.value)}
+              >
+                <MenuItem value="Aries">Aries</MenuItem>
+                <MenuItem value="Taurus">Taurus</MenuItem>
+                <MenuItem value="Gemini">Gemini</MenuItem>
+                <MenuItem value="Cancer">Cancer</MenuItem>
+                
+                <MenuItem value="Leo">Leo</MenuItem>
+                <MenuItem value="Virgo">Virgo</MenuItem>
+                <MenuItem value="Libra">Libra</MenuItem>
+                <MenuItem value="Scorpio">Scorpio</MenuItem>
+              
+                <MenuItem value="Sagittarius">Sagittarius</MenuItem>
+                <MenuItem value="Capricorn">Capricorn</MenuItem>
 
+                <MenuItem value="Aquarius">Aquarius</MenuItem>
+
+                <MenuItem value="Pisces">Pisces</MenuItem>
+              
+              </Select>
+            ) : (
+              <>
+                {userInfo.zodiac}{' '}
+                <Button
+                  variant="outlined"
+                  size="small"
+                  style={{ fontSize: 'small', padding: '5px', borderColor: 'black', color: 'black' }}
+                  onClick={() => handleButtonClick('zodiac')}
+                >
+                  Edit
+                </Button>
+              </>
+            )}
+          </Typography>
+          <Typography variant="body1" className="profile-label">
+            Hobby:{' '}
+            {editableFields.hobbies ? (
+              <Select
+                value={userInfo.hobbies}
+                onChange={(e) => handleInputChange('hobbies', e.target.value)}
+              >
+                <MenuItem value="Reading">Reading</MenuItem>
+                <MenuItem value="Painting">Painting</MenuItem>
+                <MenuItem value="Cooking">Cooking</MenuItem>
+                <MenuItem value="Hiking">Hiking</MenuItem>
+                <MenuItem value="Gardening">Gardening</MenuItem>
+                <MenuItem value="Photography">Photography</MenuItem>
+                <MenuItem value="Playing Musical Instruments">Playing Musical Instruments</MenuItem>
+                <MenuItem value="Dancing">Dancing</MenuItem>
+                <MenuItem value="Traveling">Traveling</MenuItem>
+                <MenuItem value="Fishing">Fishing</MenuItem>
+                <MenuItem value="Knitting or Crocheting">Knitting or Crocheting</MenuItem>
+                <MenuItem value="Playing Sports">Playing Sports</MenuItem>
+                <MenuItem value="Bird Watching">Bird Watching</MenuItem>
+                <MenuItem value="Yoga">Yoga</MenuItem>
+                <MenuItem value="Playing Board Games">Playing Board Games</MenuItem>
+                <MenuItem value="Writing">Writing</MenuItem>
+                <MenuItem value="Collecting">Collecting</MenuItem>
+                <MenuItem value="DIY (Do-It-Yourself) Projects">DIY (Do-It-Yourself) Projects</MenuItem>
+                <MenuItem value="Meditation">Meditation</MenuItem>
+                <MenuItem value="Camping">Camping</MenuItem>
+                            
+              </Select>
+            ) : (
+              <>
+                {userInfo.hobbies}{' '}
+                <Button
+                  variant="outlined"
+                  size="small"
+                  style={{ fontSize: 'small', padding: '5px', borderColor: 'black', color: 'black' }}
+                  onClick={() => handleButtonClick('hobbies')}
+                >
+                  Edit
+                </Button>
+              </>
+            )}
+          </Typography>
+          
+          
             <ParticleBg/>
             </div>
           </div>
         </div>
-
-      </div>
-    </div>
   );
 };
 

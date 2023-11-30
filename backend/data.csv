@@ -1,10 +1,6 @@
-first_name,last_name,email,blood_group,mbti,Is_Staff,Is_Active,date_joined
-ajarn,ajarnjack,admin@gmail.com,A,ISTJ,True,True,2023-11-19 12:25:10.804234+00:00
-no,no,no@gmail.com,AB,INTJ,False,True,2023-11-19 14:59:07.771714+00:00
-no,no,no2@gmail.com,AB,ISFJ,False,True,2023-11-19 14:59:50.663084+00:00
-kun,kerdthaisong,kun@gmail.com,B,ISTP,False,True,2023-11-20 13:49:09.980322+00:00
-nipitpon,nipitpon,nipitpon@gmail.com,B,INTJ,False,True,2023-11-21 12:10:27.277444+00:00
-test3,test,test3@gmail.com,A,ENTP,False,True,2023-11-21 12:11:08.448658+00:00
-nana,nono,kun.ker@dome.tu.ac.th,,,False,True,2023-11-26 12:52:07.248840+00:00
-fong,fongwin,fongsuwijak@gmail.com,AB,INTJ,False,True,2023-11-26 13:15:29.079857+00:00
-kun,kerdthaisong,6410685074@student.tu.ac.th,B,ESFP,False,True,2023-11-27 03:29:40.474243+00:00
+first_name,last_name,email,blood_group,mbti,zodiac,hobbies,Is_Staff,Is_Active,date_joined
+admin,adminaaa,admin@gmail.com,A,ISTJ,Leo,Gardening,True,True,2023-11-30 04:14:18.105953+00:00
+kun,kerdthaisong,kun.kerdthaisong@gmail.com,A,ESTP,Virgo,Yoga,False,True,2023-11-30 04:43:00.264735+00:00
+test1,test1,test1@gmail.com,B,ENFP,Capricorn,Meditation,False,True,2023-11-30 04:45:20.603665+00:00
+test2,test2,test2@gmail.com,A,ESFP,Virgo,Writing,False,True,2023-11-30 04:45:41.249335+00:00
+test3,test3,test3@gmail.com,O,ENFP,Scorpio,Collecting,False,True,2023-11-30 04:46:00.856245+00:00

@@ -6,7 +6,7 @@ def export_users_to_csv(file_path):
 
     with open(file_path, 'w', newline='', encoding='utf-8') as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(['first_name', 'last_name', 'email', 'blood_group', 'mbti', 'Is_Staff', 'Is_Active', 'date_joined'])
+        csv_writer.writerow(['first_name', 'last_name', 'email', 'blood_group', 'mbti','zodiac','hobbies', 'Is_Staff', 'Is_Active', 'date_joined'])
 
         for user in users:
             csv_writer.writerow([
@@ -15,6 +15,8 @@ def export_users_to_csv(file_path):
                 user.email,
                 user.blood_group,
                 user.mbti,
+                user.zodiac,
+                user.hobbies,
                 user.is_staff,
                 user.is_active,
                 user.date_joined

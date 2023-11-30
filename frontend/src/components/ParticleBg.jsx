@@ -10,14 +10,14 @@ function ParticleBg() {
   const particleOptions = {
     particles: {
       number: {
-        value: 12,
+        value: 7,
         density: {
-          enable: false,
-          value_area: 800,
+          enable: true,
+          value_area: 500,
         },
       },
       color: {
-        value: ["#1577ba", "#ba88ff"],
+        value: ["#FFFFFF", "#089AFF","#8321FF"],
       },
       opacity: {
         value: 0.8,
@@ -40,7 +40,7 @@ function ParticleBg() {
         },
       },
       shape: {
-        type: "star",
+        type: ["star"],
         options: {
           sides: 5,
         },
@@ -63,7 +63,7 @@ function ParticleBg() {
         },
       },
       line_linked: {
-        enable: true,
+        enable: false,
         distance: 600,
         opacity: 0.4,
         width: 2,
@@ -83,13 +83,13 @@ function ParticleBg() {
       },
       modes: {
         grab: {
-          distance: 400,
+          distance: 200,
           line_linked: {
             opacity: 1,
           },
         },
         bubble: {
-          distance: 400,
+          distance: 200,
           size: 40,
           duration: 2,
           opacity: 8,

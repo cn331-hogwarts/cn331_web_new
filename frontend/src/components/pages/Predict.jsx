@@ -1,14 +1,16 @@
 import React, { useState,useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import { motion } from 'framer-motion';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { GoChevronDown } from "react-icons/go";
+
 import "../Predict.css"
+import ParticleBg from '../ParticleBg';
 import ParticleBg2 from "../ParticleBg2"
 import ParticleBg3 from "../ParticleBg3"
-import ParticleBg4 from '../ParticleBg4'
+//import ParticleBg4 from '../ParticleBg4'
 
 // images
 //p_river
@@ -38,11 +40,12 @@ import town_p8 from '../../assets/images/p_town/a8.png'
 
 
 const Predict = () => {
-  const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
 
   const [showScrollDownText, setShowScrollDownText] = useState(false);
+
+  const { userInfo } = useSelector((state) => state.auth);
 
   const handleButtonClick = async () => {
     try {
@@ -86,7 +89,7 @@ const Predict = () => {
         <ParallaxLayer offset={0.3} key={1} speed={0.3} factor={1} style={{backgroundImage:`url(${river_p2})`,backgroundPositionX:'-180px',backgroundSize:'1600px',zIndex:1}}
         >
         <motion.div variants={titleVariants} initial="hidden" animate="visible">
-          <h1 className='findaway-title' style={{color:"white",fontSize:100}}>findaway</h1>
+          <h1 className='findaway-title' style={{color:"white",fontSize:100}}>findsomeone</h1>
         </motion.div>
 
         <Button
@@ -155,10 +158,11 @@ const Predict = () => {
         </ParallaxLayer>
 
         <ParallaxLayer offset={5} key={4} speed={0} factor={1} style={{backgroundImage:`url(${pond})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        {showScrollDownText && <motion.div variants={titleVariants} initial="hidden" animate="visible">
           <ParticleBg3/>
-          <div>
-            <h2 style={{color:'white' ,fontSize:40 ,zIndex:100}}>{result}</h2>
-          </div>
+          <h1 style={{color:"white",fontSize:50,marginTop:130,fontFamily:"Cursive"}}>{result}</h1>
+          <GoChevronDown style={{ color: 'white' ,fontSize:40}} />
+        </motion.div>}
         </ParallaxLayer>
         
         <ParallaxLayer offset={5} key={4} speed={0.2} factor={1.3}  style={{backgroundImage:`url(${forest})`,backgroundSize:'cover',position:'fixed'}}>
@@ -174,12 +178,22 @@ const Predict = () => {
         <ParallaxLayer offset={7} key={1} speed={0.1} factor={1} style={{backgroundImage:`url(${town_p3})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'330px'}}>
         </ParallaxLayer>
 
-        <ParallaxLayer offset={7} key={1} speed={0.1} factor={1} style={{zIndex:2,backgroundImage:`url(${town_p4})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'490px'}}>
+        <ParallaxLayer offset={7} key={1} speed={0.1} factor={1} style={{zIndex:2,backgroundImage:`url(${town_p4})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'540px'}}>
         </ParallaxLayer>
 
-        <ParallaxLayer offset={7.2} key={1} speed={0.1} factor={1} style={{zIndex:1, backgroundImage:`url(${town_p5})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'520px'}}>
+        <ParallaxLayer offset={7.2} key={1} speed={0.1} factor={1} style={{zIndex:1, backgroundImage:`url(${town_p5})`,backgroundSize:'1500px',backgroundPositionX:'0px',backgroundPositionY:'540px'}}>
         </ParallaxLayer>
         <ParallaxLayer offset={7} key={1} speed={0.149} factor={1} style={{zIndex:3, backgroundImage:`url(${town_p2})`,backgroundSize:'300px',backgroundPositionX:'800px',backgroundPositionY:'520px'}}> 
+        {showScrollDownText ? (
+          <>
+            <ParticleBg/>
+            <h1 style={{color:"white",fontSize:100,fontFamily:"Cursive"}}> congrats!</h1>
+            <h2 style={{color:"white",fontSize:70,fontFamily:"Cursive",zIndex:100,marginTop:'-100px'}}> {userInfo.first_name} {userInfo.last_name}</h2>
+          </>
+        ):(
+          <h1 style={{color:"white",fontSize:100,fontFamily:"Cursive",marginTop:'100px'}}> just a normal town</h1>
+        )}
+
         </ParallaxLayer>
       </Parallax>
   );
