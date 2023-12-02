@@ -35,7 +35,6 @@ function App() {
           <Route path="/activate/:uid/:token" exact element={<ActivatePage />} />
           <Route path="/password/reset/confirm/:uid/:token" exact element={<ResetPasswordPageConfirm/>} />
         </Routes>
-      <Footer/>
       </Router>
       <ToastContainer/>
     </>

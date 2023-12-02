@@ -5,8 +5,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import "../Predict.css"
+import Footer from '../Footer';
 
-// images
 import river from '../../assets/images/river.jpg';
 import town from '../../assets/images/town.png';
 import hill from '../../assets/images/hill.jpg';
@@ -38,6 +38,7 @@ const Predict = () => {
   const ref=useRef();
 
   return (
+    <>
       <Parallax pages={3} style={parallaxStyle} ref={ref}>
         <ParallaxLayer offset={0} key={1} speed={0.02}factor={1} onClick={() => {ref.current.scrollTo(1)}} 
           style={{backgroundImage:`url(${river})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -68,6 +69,8 @@ const Predict = () => {
         </ParallaxLayer>
       
       </Parallax>
+      <Footer/>
+    </>
   );
 };
 

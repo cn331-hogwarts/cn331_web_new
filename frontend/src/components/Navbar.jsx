@@ -5,6 +5,8 @@ import './Navbar.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../components/services/authSlice'
 import { toast } from 'react-toastify';
+import { BsFillArrowThroughHeartFill } from "react-icons/bs";
+
 
 const Navbar=()=> {
   const [click, setClick] = useState(false);
@@ -56,7 +58,7 @@ const Navbar=()=> {
       <nav className='navbar' style={{ background: `linear-gradient(90deg, #000000 10%, ${h1Color} 100%)` }}>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            findaway
+            FindAway<BsFillArrowThroughHeartFill />
             <i className='fab fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>

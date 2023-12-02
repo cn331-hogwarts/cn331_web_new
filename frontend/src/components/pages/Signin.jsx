@@ -63,22 +63,22 @@ const Signin = () => {
                         {isLoading}
                     <form className="auth__form">
                         <input type="text"
-                            placeholder="email"
+                            placeholder="Email"
                             name="email"
                             onChange={handleChange}
                             value={email}
                             required
                         />
                         <input type="password"
-                            placeholder="password"
+                            placeholder="Password"
                             name="password"
                             onChange={handleChange}
                             value={password}
                             required
                         />
-                        <Link to="/reset-password">Forget Password ?</Link>
-                        <Link to="/register"> signup</Link>
-                        <button className="btn btn-primary" type="submit" onClick={handleSubmit}>signin</button>
+                        <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Sign In</button>
+                        <Link to="/reset-password" style={{ color: 'blue', marginTop: '20px' }}>Forget Password?</Link>
+                        <p style={{ color: 'AliceBlue' }}>Don't have an account? <Link to="/register" style={{ color: 'blue', marginTop: '20px' }}>Sign Up</Link></p>
                     </form>
                 </div>
             </div>
