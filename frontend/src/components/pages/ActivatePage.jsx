@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { BiUserCheck } from 'react-icons/bi'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { activate, reset } from '../services/authSlice'
-import { toast } from 'react-toastify'
-import '../ActivatePage.css'
+import { useEffect } from 'react';
+import { BiUserCheck } from 'react-icons/bi';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { activate, reset } from '../services/authSlice';
+import { toast } from 'react-toastify';
+import '../ActivatePage.css';
 
 const ActivatePage = () => {
 

@@ -13,7 +13,6 @@ import ActivatePage from './components/pages/ActivatePage'
 import ResetPasswordPage from './components/pages/ResetPasswordPage'
 import ResetPasswordPageConfirm from './components/pages/ResetPasswordPageConfirm'
 import Predict from './components/pages/Predict'
-import Footer from './components/Footer'
 import Cursor from './components/Cursor'
 
 
@@ -35,7 +34,6 @@ function App() {
           <Route path="/activate/:uid/:token" exact element={<ActivatePage />} />
           <Route path="/password/reset/confirm/:uid/:token" exact element={<ResetPasswordPageConfirm/>} />
         </Routes>
-      <Footer/>
       </Router>
       <ToastContainer/>
     </>

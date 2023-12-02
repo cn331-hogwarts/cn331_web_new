@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { useSelector, useDispatch } from "react-redux"
-import { resetPasswordConfirm } from '../services/authSlice'
-import { AiFillLock } from 'react-icons/ai'
-import '../ResetPasswordPageConfirm.css'
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from "react-redux";
+import { resetPasswordConfirm } from '../services/authSlice';
+import { AiFillLock } from 'react-icons/ai';
+import '../ResetPasswordPageConfirm.css';
 
 
 const ResetPasswordPageConfirm = () => {

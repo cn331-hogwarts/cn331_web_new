@@ -1,5 +1,5 @@
-import React from "react"
-import AnimatedCursor from "react-animated-cursor"
+import React from "react";
+import AnimatedCursor from "react-animated-cursor";
 
 export default function Cursor() {
   return (

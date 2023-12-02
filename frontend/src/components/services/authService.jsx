@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 const BACKEND_DOMAIN ="http://localhost:8000"//https backend
 

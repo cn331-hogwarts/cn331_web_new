@@ -1,18 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .body_page {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70vh;
-    background-image: url("https://i.pinimg.com/originals/8b/3c/4f/8b3c4f0f972b936fae0c888c5e5ede98.jpg");
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://gifdb.com/images/file/mystical-blue-forest-gg1cjxrc51bn8oh3.gif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: scale(1.2);
-    overflow: hidden;
 }
 
 .auth__container {
-    background-color: rgba(188, 89, 218, 0.9);
+    background-color: rgba(39, 110, 197, 0.9);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
     width: 300px;
@@ -42,7 +47,7 @@ input {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: #514ad2;
     color: #fff;
     border: none;
     padding: 12px;
@@ -50,11 +55,11 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: rgb(39, 125, 179);
 }
 
 Link {

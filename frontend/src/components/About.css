@@ -1,25 +1,20 @@
-body {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 0;
-    background-size: cover;
-    background-color: #000000;
-    font-family: 'Your Font', sans-serif;
-    z-index: 0;
-}
-
 .body-info {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-    margin-top: 75px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://zbase-global.zingfront.com/saasbox/resources/gif/背景19__ad22267ff8619dac58ed416a4739edba.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .about-box {
     width: 45%;
     margin-bottom: 20px;
-    background-color: rgba(188, 89, 218, 0.9);
+    background-color: rgba(44, 113, 54, 0.9);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,7 +54,7 @@ body {
 }
 
 .about-paragraph a {
-    color: white;
+    color: rgb(73, 250, 229);
     text-decoration: underline;
 }
 
@@ -68,5 +63,25 @@ body {
     .about-box {
       width: 100%;
     }
-}  
-  
+}
+
+.slide-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.slick-dots li button:before {
+    font-size: 24px;
+    color: rgb(36, 193, 44);
+}
+
+.slick-dots {
+    height: 200px;
+}
+
+.about-title,
+.about-paragraph {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

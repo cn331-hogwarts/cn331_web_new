@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { toast } from 'react-toastify'
-import { useDispatch, useSelector } from 'react-redux'
-import { BiLogInCircle } from "react-icons/bi"
-import { resetPassword } from "../services/authSlice.jsx"
-import '../ResetPasswordPage.css'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { BiLogInCircle } from "react-icons/bi";
+import { resetPassword } from "../services/authSlice.jsx";
+import '../ResetPasswordPage.css';
 
 const LoginPage = () => {
 

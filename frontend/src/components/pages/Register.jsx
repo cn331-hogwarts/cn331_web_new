@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
-import { BiUser } from 'react-icons/bi'
-import { useDispatch, useSelector } from 'react-redux'
-import { register, reset } from '../services/authSlice'
-import { useNavigate } from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import '../register.css'
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { BiUser } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { register, reset } from '../services/authSlice';
+import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import '../register.css';
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({

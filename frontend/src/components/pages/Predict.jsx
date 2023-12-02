@@ -8,35 +8,35 @@ import { GoChevronDown } from "react-icons/go";
 
 import "../Predict.css"
 import ParticleBg from '../ParticleBg';
-import ParticleBg2 from "../ParticleBg2"
-import ParticleBg3 from "../ParticleBg3"
+import ParticleBg2 from "../ParticleBg2";
+import ParticleBg3 from "../ParticleBg3";
 //import ParticleBg4 from '../ParticleBg4'
 
 // images
 //p_river
-import river_p2 from '../../assets/images/p_river/a2.png'
-import river_p3 from '../../assets/images/p_river/a3.png'
-import river_p4 from '../../assets/images/p_river/a4.png'
-import river_p5 from '../../assets/images/p_river/a5.png'
+import river_p2 from '../../assets/images/p_river/a2.png';
+import river_p3 from '../../assets/images/p_river/a3.png';
+import river_p4 from '../../assets/images/p_river/a4.png';
+import river_p5 from '../../assets/images/p_river/a5.png';
 
 //p_hill
-import hill_p1 from '../../assets/images/p_hill/a1.png'
-import hill_p2 from '../../assets/images/p_hill/a2.png'
-import hill_p3 from '../../assets/images/p_hill/a3.png'
+import hill_p1 from '../../assets/images/p_hill/a1.png';
+import hill_p2 from '../../assets/images/p_hill/a2.png';
+import hill_p3 from '../../assets/images/p_hill/a3.png';
 
 
-import pond from '../../assets/images/pond.jpg'
-import forest from '../../assets/images/bg.png'
+import pond from '../../assets/images/pond.jpg';
+import forest from '../../assets/images/bg.png';
 
 //p_town
 //import town from '../../assets/images/town.png'
-import town_p2 from '../../assets/images/p_town/a2.png'
-import town_p3 from '../../assets/images/p_town/a3.png'
-import town_p4 from '../../assets/images/p_town/a4.png'
-import town_p5 from '../../assets/images/p_town/a5.png'
-import town_p6 from '../../assets/images/p_town/a6.png'
-import town_p7 from '../../assets/images/p_town/a7.png'
-import town_p8 from '../../assets/images/p_town/a8.png'
+import town_p2 from '../../assets/images/p_town/a2.png';
+import town_p3 from '../../assets/images/p_town/a3.png';
+import town_p4 from '../../assets/images/p_town/a4.png';
+import town_p5 from '../../assets/images/p_town/a5.png';
+import town_p6 from '../../assets/images/p_town/a6.png';
+import town_p7 from '../../assets/images/p_town/a7.png';
+import town_p8 from '../../assets/images/p_town/a8.png';
 
 
 const Predict = () => {
@@ -76,6 +76,7 @@ const Predict = () => {
   };
 
   return (
+    <>
       <Parallax pages={10} style={parallaxStyle} ref={ref}>
         <ParallaxLayer offset={0} key={1} speed={0.05}factor={1} 
           style={{backgroundImage:`url(${river_p5})`,backgroundPositionY:'70px',backgroundSize:'1600px'}}>
@@ -160,7 +161,7 @@ const Predict = () => {
         <ParallaxLayer offset={5} key={4} speed={0} factor={1} style={{backgroundImage:`url(${pond})`,backgroundSize:'cover',display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         {showScrollDownText && <motion.div variants={titleVariants} initial="hidden" animate="visible">
           <ParticleBg3/>
-          <h1 style={{color:"white",fontSize:50,marginTop:130,fontFamily:"Cursive"}}>{result}</h1>
+          <h1 style={{color:"white",fontSize:30,marginTop:130,fontFamily:"Cursive"}}>{result}</h1>
           <GoChevronDown style={{ color: 'white' ,fontSize:40}} />
         </motion.div>}
         </ParallaxLayer>
@@ -196,6 +197,7 @@ const Predict = () => {
 
         </ParallaxLayer>
       </Parallax>
+      </>
   );
 };
 

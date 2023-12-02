@@ -24,6 +24,12 @@ function Cards() {
               text='houses at hogwarts'
               path='https://www.wizardingworld.com/news/discover-your-hogwarts-house-on-wizarding-world'
             />
+
+              <CardItem
+              src='https://img.jagranjosh.com/images/2023/September/1392023/blood-type-personality-test.jpg'
+              text='blood group'
+              path='https://www.verywellmind.com/what-is-blood-type-personality-5191276'
+            />
           </ul>
         </div>
       </div>

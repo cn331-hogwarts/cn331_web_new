@@ -19,6 +19,7 @@ align-items: center;
 max-width: 1000px;
 max-height: 1000px;
 width: 150%;
+margin: 0 auto; 
 }
 
 .cards__wrapper {
