@@ -35,8 +35,10 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000", #backend
-    "http://localhost:5173" #frontend
+    "http://178.128.125.251:80", #backend
+    "http://localhost:5173", #frontend
+    "http://167.99.72.189:80",
+    "http://167.99.72.189"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -122,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
@@ -158,7 +160,7 @@ DJOSER = {
     },
 }
 
-#open /Applications/Python\ 3.12/Install\ Certificates.command
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")

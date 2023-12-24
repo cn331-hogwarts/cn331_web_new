@@ -1,6 +1,7 @@
 first_name,last_name,email,blood_group,mbti,zodiac,hobbies,Is_Staff,Is_Active,date_joined
-admin,adminaaa,admin@gmail.com,A,ISTJ,Leo,Gardening,True,True,2023-11-30 04:14:18.105953+00:00
+admin,adminaaa,admin@gmail.com,B,ISFP,Libra,Writing,True,True,2023-11-30 04:14:18.105953+00:00
 kun,kerdthaisong,kun.kerdthaisong@gmail.com,A,ESTP,Virgo,Yoga,False,True,2023-11-30 04:43:00.264735+00:00
 test1,test1,test1@gmail.com,B,ENFP,Capricorn,Meditation,False,True,2023-11-30 04:45:20.603665+00:00
 test2,test2,test2@gmail.com,A,ESFP,Virgo,Writing,False,True,2023-11-30 04:45:41.249335+00:00
 test3,test3,test3@gmail.com,B,INTP,Leo,Bird Watching,False,True,2023-11-30 04:46:00.856245+00:00
+kun2,kun2,kun.ker@dome.tu.ac.th,AB,INTP,Leo,Playing Board Games,False,True,2023-12-03 15:05:58.152876+00:00

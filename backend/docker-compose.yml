@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  # db:
+  #   image: postgres
+  #   env_file:
+  #     - .env
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py makemigrations findaway && python manage.py migrate && python manage.py migrate findaway && python manage.py exportUsers ./data.csv && python manage.py runserver 0:80"
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    # depends_on:
+    #   - db
+    env_file:
+      - .env
