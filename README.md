@@ -6,6 +6,18 @@
 - Thanakorn Praimanee 6410685157
 - Suwijak Tantamaroj 6410685256
 
-"""bash
-a
-"""
+install dependencies
+```bash
+pip install -r requirements.txt
+```
+# run server frontend
+- cd to /frontend and run
+```bash
+npm run dev
+```
+
+#run backend server
+- cd to /backend and run
+```bash
+python manage.py runserver
+```
