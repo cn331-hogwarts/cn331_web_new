@@ -21,3 +21,6 @@ npm run dev
 ```bash
 python manage.py runserver
 ```
+
+# demo video
+https://youtu.be/zAi5kiHadc4?si=iN1Evdk8NLd-oFAg 
