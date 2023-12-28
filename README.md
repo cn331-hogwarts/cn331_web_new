@@ -10,13 +10,13 @@ install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-# run server frontend
+# run frontend server
 - cd to /frontend and run
 ```bash
 npm run dev
 ```
 
-#run backend server
+# run backend server
 - cd to /backend and run
 ```bash
 python manage.py runserver
